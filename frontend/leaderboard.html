@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng - EntConnect</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- 🎨 Appearance Studio -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/appearance-studio.css">
+    <link rel="stylesheet" href="/css/footer-enhanced.css">
+    <link rel="stylesheet" href="/chat-room.css">
+    <link rel="stylesheet" href="/css/leaderboard.css">
+    <link rel="stylesheet" href="/css/membership.css">
+    <script src="/js/data.js"></script>
+</head>
+
+<body class="bg-body bg-mesh">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar scrolled">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <i class="bi bi-rocket-takeoff-fill text-primary me-2 fs-3"></i>
+                <span>Ent<span class="text-primary">Connect</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-list fs-1 text-dark"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold text-uppercase small tracking-wider">
+                    <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/discover">Khám phá</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community">Cộng đồng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hire.html">Thuê bạn</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary" href="/marketplace.html">Chợ kết nối <i class="bi bi-stars"></i></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/leaderboard.html">Xếp hạng</a></li>
+                </ul>
+                
+                <!-- Theme Toggle -->
+                <div class="theme-toggle me-3 d-flex align-items-center">
+                    <button id="theme-toggle-btn" class="btn btn-link text-dark p-0 border-0 fs-5">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </div>
+                
+                <!-- Guest View -->
+                <div class="d-flex gap-3 align-items-center auth-guest">
+                    <button class="btn btn-link text-decoration-none text-dark fw-bold px-3 btn-login" type="button"
+                        data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    <button class="btn btn-primary rounded-pill shadow-sm px-4 btn-register" type="button"
+                        data-bs-toggle="modal" data-bs-target="#registerModal">Tham gia ngay</button>
+                </div>
+                
+                <!-- Authenticated View -->
+                <div class="d-flex gap-3 align-items-center auth-user d-none">
+                    <!-- Membership Badge -->
+                    <div id="navbar-rank-badge" class="rank-badge-nav d-none d-md-flex"></div>
+
+                    <div class="dropdown">
+                        <button class="btn glass-panel dropdown-toggle rounded-pill d-flex align-items-center gap-2 px-3 border shadow-sm"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="" alt="avatar" class="rounded-circle current-user-avatar border border-white" width="34" height="34" style="object-fit:cover;">
+                            <span class="fw-bold current-username text-truncate d-none d-sm-inline" style="max-width: 120px;">Username</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-3 p-2 rounded-4">
+                            <li><a class="dropdown-item py-2 px-3 rounded-3 fw-medium" href="/dashboard">
+                                <i class="bi bi-grid-1x2 text-primary me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item py-2 px-3 rounded-3 fw-medium" href="/leaderboard.html">
+                                <i class="bi bi-trophy-fill text-warning me-2"></i>Bảng xếp hạng</a></li>
+                            <li><hr class="dropdown-divider opacity-50"></li>
+                            <li><button class="dropdown-item py-2 px-3 rounded-3 text-danger fw-bold" type="button" id="btnLogout">
+                                <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="py-5" style="margin-top: 80px;">
+        <div class="container">
+            <!-- Hero Banner -->
+            <div class="leaderboard-hero mb-5 rounded-4 p-5 text-center text-white position-relative overflow-hidden shadow-lg">
+                <div class="hero-overlay"></div>
+                <div class="position-relative z-index-2">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3">
+                        <i class="bi bi-stars"></i> ĐẤU TRƯỜNG VINH QUANG
+                    </span>
+                    <h1 class="display-5 fw-bold font-outfit mb-3 text-shadow-sm">BẢNG XẾP HẠNG THÀNH VIÊN</h1>
+                    <p class="fs-6 text-white-50 mx-auto" style="max-width: 650px;">
+                        Tôn vinh các thành viên hoạt động năng nổ, tổ chức sự kiện tuyệt vời và đóng góp tích cực cho cộng đồng EntConnect.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="d-flex justify-content-center mb-5">
+                <ul class="nav nav-pills glass-panel p-2 rounded-pill shadow-sm border" id="leaderboardTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active rounded-pill px-4 py-2.5 fw-bold d-flex align-items-center gap-2" id="tab-exp-btn" data-bs-toggle="pill" data-category="exp" type="button" role="tab">
+                            <i class="bi bi-gem"></i> Top EXP Ranks
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4 py-2.5 fw-bold d-flex align-items-center gap-2" id="tab-hosts-btn" data-bs-toggle="pill" data-category="hosts" type="button" role="tab">
+                            <i class="bi bi-megaphone"></i> Host Sự Kiện
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4 py-2.5 fw-bold d-flex align-items-center gap-2" id="tab-companions-btn" data-bs-toggle="pill" data-category="companions" type="button" role="tab">
+                            <i class="bi bi-people"></i> Bạn Đồng Hành
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4 py-2.5 fw-bold d-flex align-items-center gap-2" id="tab-community-btn" data-bs-toggle="pill" data-category="community" type="button" role="tab">
+                            <i class="bi bi-chat-heart"></i> Tương Tác
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Spotlight Top 3 -->
+            <div class="row g-4 justify-content-center align-items-end mb-5" id="full-leaderboard-spotlight">
+                <!-- Loaded dynamically by JS -->
+            </div>
+
+            <!-- Leaderboard Table List (Ranks 4-20) -->
+            <div class="glass-panel p-4 rounded-4 shadow-sm border mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <h5 class="fw-bold mb-0 font-outfit" id="table-title">Xếp hạng thành viên</h5>
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold" id="user-count-badge">20 thành viên</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle custom-leaderboard-table text-white">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width: 80px;">Hạng</th>
+                                <th>Thành viên</th>
+                                <th>Cấp độ / Rank</th>
+                                <th class="text-end" id="table-score-header">EXP Tích lũy</th>
+                            </tr>
+                        </thead>
+                        <tbody id="full-leaderboard-tbody">
+                            <!-- Loaded dynamically by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Current User Ranking Footer Sticky -->
+            <div id="leaderboard-current-user-sticky" class="d-none">
+                <!-- Loaded dynamically by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="fw-bold text-white mb-4">Ent<span class="text-primary">Connect.</span></h3>
+                    <p class="mb-4">Nền tảng tiên phong trong việc kết nối cộng đồng giải trí và chia sẻ đam mê qua các hoạt động thực tế.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://facebook.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 ms-auto">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Khám phá</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="/discover" id="footer-link-events" class="text-decoration-none text-muted footer-link-enhanced">Sự kiện</a></li>
+                        <li><a href="/community" id="footer-link-community" class="text-decoration-none text-muted footer-link-enhanced">Cộng đồng</a></li>
+                        <li><a href="#" id="footer-link-places" class="text-decoration-none text-muted footer-link-enhanced">Địa điểm</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Hỗ trợ</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" id="footer-link-help" class="text-decoration-none text-muted footer-link-enhanced">Trợ giúp</a></li>
+                        <li><a href="#" id="footer-link-report" class="text-decoration-none text-muted footer-link-enhanced">Báo lỗi</a></li>
+                        <li><a href="#" id="footer-link-rules" class="text-decoration-none text-muted footer-link-enhanced">Quy tắc</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Nhận bản tin</h6>
+                    <p class="small mb-3">Cập nhật những hoạt động cực "chill" hàng tuần.</p>
+                    <div class="position-relative">
+                        <div class="input-group">
+                            <input type="email" id="footer-newsletter-email" class="form-control bg-dark border-secondary text-white rounded-start-pill px-3 newsletter-input" placeholder="Email...">
+                            <button id="footer-newsletter-submit" class="btn btn-primary rounded-end-pill position-relative">
+                                <span class="icon-normal">Đăng ký <i class="bi bi-send ms-1"></i></span>
+                                <span class="icon-loading d-none"><i class="bi bi-arrow-repeat"></i></span>
+                            </button>
+                        </div>
+                        <div id="footer-newsletter-error" class="newsletter-error-msg position-absolute"></div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <p class="text-center small mb-0">&copy; 2026 EntConnect Platform (Graduation Project). Built with ❤️ for interaction.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="/js/api.js"></script>
+    <script src="/js/roles.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/userPrefs.js"></script>
+    <script src="/js/payment.js"></script>
+    <script src="/js/chat-realtime.js"></script>
+    <script src="/js/ai-assistant.js"></script>
+    <script src="/js/socket-client.js"></script>
+    <script src="/js/footer-system.js"></script>
+    
+    <!-- Membership & Gamification System -->
+    <script src="/js/exp-system.js"></script>
+    <script src="/js/achievements.js"></script>
+    <script src="/js/daily-reward.js"></script>
+    <script src="/js/membership.js"></script>
+
+    <!-- 🎨 Appearance Studio System -->
+    <script src="/js/theme-presets.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script src="/js/appearance-studio.js"></script>
+    <script src="/js/leaderboard.js"></script>
+</body>
+
+</html>

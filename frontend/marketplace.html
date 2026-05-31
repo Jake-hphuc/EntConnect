@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chợ Kết Nối - EntConnect</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- 🎨 Appearance Studio -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/appearance-studio.css">
+    <link rel="stylesheet" href="/chat-room.css">
+    <link rel="stylesheet" href="/css/marketplace.css">
+    <link rel="stylesheet" href="/css/membership.css">
+    <script src="/js/data.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>
+                <span>Ent<span class="text-primary">Connect</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-grid-fill fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold small text-uppercase gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/discover">Khám phá</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community">Cộng đồng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hire.html">Thuê bạn</a></li>
+                    <li class="nav-item"><a class="nav-link active text-primary" href="/marketplace.html">Chợ kết nối</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/leaderboard.html">Xếp hạng</a></li>
+                </ul>
+                
+                <!-- Guest UI -->
+                <div class="d-flex gap-2 auth-guest">
+                    <button class="btn btn-link text-decoration-none text-main fw-bold px-3 py-2" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Bắt đầu</button>
+                </div>
+                
+                <!-- User UI -->
+                <div class="auth-user d-none d-flex align-items-center gap-3">
+                    <!-- Membership Badge -->
+                    <div id="navbar-rank-badge" class="rank-badge-nav d-none d-md-flex"></div>
+
+                    <div class="dropdown">
+                        <button class="btn glass-panel dropdown-toggle rounded-pill d-flex align-items-center gap-2 p-1 pe-3 border" type="button" data-bs-toggle="dropdown">
+                            <img src="" alt="avatar" class="rounded-circle current-user-avatar" width="36" height="36" style="object-fit:cover;">
+                            <span class="fw-bold current-username small text-truncate d-none d-sm-inline" style="max-width: 100px;">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-premium border-0 mt-3 p-2 rounded-4">
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/dashboard"><i class="bi bi-grid-1x2 text-primary me-2"></i>Bảng điều khiển</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/leaderboard.html"><i class="bi bi-trophy-fill text-warning me-2"></i>Bảng xếp hạng</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3" href="/dashboard?tab=profile"><i class="bi bi-person me-2"></i>Hồ sơ cá nhân</a></li>
+                            <li><hr class="dropdown-divider opacity-10"></li>
+                            <li><button class="dropdown-item py-2 rounded-3 text-danger fw-bold" id="btnLogout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main style="padding-top: 76px;">
+        <section class="mp-hero">
+            <div class="container mp-hero-content">
+                <span class="badge bg-white bg-opacity-25 text-dark px-3 py-2 rounded-pill fw-bold mb-3 border border-light">
+                    ✨ DỊCH VỤ & BẠN ĐỒNG HÀNH
+                </span>
+                <h1 class="mp-hero-title">Khám Phá & Đăng Bài Dễ Dàng</h1>
+                <p class="text-muted fs-5 mx-auto mb-4" style="max-width: 600px;">
+                    Tìm kiếm đồng đội, thuê người trò chuyện, hay tạo sự kiện cá nhân nhanh chóng chỉ với vài thao tác.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="/create-post.html" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm">
+                        <i class="bi bi-plus-circle me-1"></i> Đăng bài ngay
+                    </a>
+                    <button class="btn btn-outline-dark rounded-pill px-4 py-2 fw-bold" onclick="document.getElementById('marketplace-content').scrollIntoView({behavior: 'smooth'})">
+                        Khám phá công việc
+                    </button>
+                </div>
+                
+                <div class="mp-stats-container">
+                    <div class="mp-stat-item">
+                        <div class="mp-stat-number" id="stat-posts">0</div>
+                        <div class="mp-stat-label">Bài đăng hoạt động</div>
+                    </div>
+                    <div class="mp-stat-item">
+                        <div class="mp-stat-number" id="stat-online">0</div>
+                        <div class="mp-stat-label">Người đang online</div>
+                    </div>
+                    <div class="mp-stat-item">
+                        <div class="mp-stat-number" id="stat-bookings">0</div>
+                        <div class="mp-stat-label">Lượt thuê hôm nay</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketplace Content -->
+        <section id="marketplace-content" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Filter Sidebar -->
+                    <div class="col-lg-3 mb-4 mb-lg-0">
+                        <div class="mp-filter-sidebar sticky-top" style="top: 100px;">
+                            <h5 class="mp-filter-title"><i class="bi bi-funnel me-2"></i>Bộ Lọc</h5>
+                            
+                            <div class="mb-4">
+                                <label class="form-label fw-bold small text-muted">Tìm kiếm</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-transparent border-end-0"><i class="bi bi-search"></i></span>
+                                    <input type="text" id="mp-search" class="form-control border-start-0 ps-0" placeholder="Từ khóa...">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label fw-bold small text-muted">Danh mục</label>
+                                <select class="form-select" id="mp-category">
+                                    <option value="all">Tất cả</option>
+                                    <option value="gaming">Teammate Gaming</option>
+                                    <option value="chat">Trò chuyện / Tâm sự</option>
+                                    <option value="event">Sự kiện chung</option>
+                                    <option value="movies">Xem phim / Đi chơi</option>
+                                    <option value="music">Ca hát / Karaoke</option>
+                                    <option value="travel">Du lịch</option>
+                                    <option value="parttime">Công việc giải trí</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label fw-bold small text-muted">Hình thức</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="mpMode" id="modeAll" value="all" checked>
+                                    <label class="form-check-label" for="modeAll">Tất cả</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="mpMode" id="modeOnline" value="online">
+                                    <label class="form-check-label" for="modeOnline">Online</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="mpMode" id="modeOffline" value="offline">
+                                    <label class="form-check-label" for="modeOffline">Offline</label>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-outline-primary w-100" id="mp-btn-reset">Xóa bộ lọc</button>
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="col-lg-9">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="fw-bold mb-0">Danh sách nổi bật</h3>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle border" type="button" data-bs-toggle="dropdown">
+                                    Sắp xếp: Mới nhất
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Mới nhất</a></li>
+                                    <li><a class="dropdown-item" href="#">Giá thấp đến cao</a></li>
+                                    <li><a class="dropdown-item" href="#">Đánh giá cao</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Posts Grid -->
+                        <div class="row g-4" id="mp-posts-container">
+                            <!-- Skeleton Loader -->
+                            <div class="col-md-6 col-lg-4 mp-skeleton">
+                                <div class="mp-card placeholder-glow">
+                                    <div class="placeholder w-100 mb-3" style="height: 180px; border-radius: 15px;"></div>
+                                    <div class="placeholder w-75 mb-2"></div>
+                                    <div class="placeholder w-50"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section (Integrated) -->
+        <section class="py-5 bg-white border-top">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill fw-bold mb-2">🏆 VINH DANH</span>
+                    <h2 class="fw-bold">Bảng Xếp Hạng Uy Tín</h2>
+                    <p class="text-muted">Những người đồng hành được yêu thích nhất tháng</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden" id="mp-leaderboard-container">
+                            <!-- JS will populate -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div class="modal fade" id="mpDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content mp-modal-content">
+                <div class="modal-header mp-modal-header">
+                    <h5 class="modal-title fw-bold">Chi tiết bài đăng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0" id="mpDetailBody">
+                    <!-- Loaded via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="mp-toast-container" id="mpToastContainer"></div>
+
+    <!-- Bootstrap & Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <!-- We must load marketplace logic as module since mock-data uses export -->
+    <script type="module" src="/js/marketplace.js"></script>
+    <script type="module" src="/js/booking.js"></script>
+    
+    <!-- Membership & Gamification System -->
+    <script src="/js/exp-system.js"></script>
+    <script src="/js/achievements.js"></script>
+    <script src="/js/daily-reward.js"></script>
+    <script src="/js/membership.js"></script>
+
+    <!-- 🎨 Appearance Studio System -->
+    <script src="/js/theme-presets.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script src="/js/appearance-studio.js"></script>
+</body>
+</html>

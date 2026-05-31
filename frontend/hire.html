@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuê Bạn Đồng Hành - EntConnect</title>
+    <meta name="description" content="Tìm và thuê bạn đồng hành để chơi game, hát karaoke, xem phim hoặc đi sự kiện. Hàng trăm người sẵn sàng kết nối.">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- 🎨 Appearance Studio -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/appearance-studio.css">
+    <link rel="stylesheet" href="/css/hire.css">
+    <link rel="stylesheet" href="/payment.css">
+    <link rel="stylesheet" href="/css/hire-payment.css">
+    <link rel="stylesheet" href="/css/membership.css">
+</head>
+
+<body class="bg-body bg-mesh">
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar scrolled">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>
+                <span>Ent<span class="text-primary">Connect</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-grid-fill fs-2 text-dark"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold small text-uppercase gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/discover">Khám phá</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community">Cộng đồng</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/hire.html">Thuê bạn</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary" href="/marketplace.html">Chợ kết nối <i class="bi bi-stars"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/leaderboard.html">Xếp hạng</a></li>
+                </ul>
+                <!-- Auth Guest -->
+                <div class="d-flex gap-2 auth-guest">
+                    <button class="btn btn-link text-decoration-none text-main fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Bắt đầu</button>
+                </div>
+                <!-- Auth User -->
+                <div class="auth-user d-none d-flex align-items-center gap-3">
+                    <!-- Membership Badge -->
+                    <div id="navbar-rank-badge" class="rank-badge-nav d-none d-md-flex"></div>
+
+                    <div class="dropdown">
+                        <button class="btn glass-panel dropdown-toggle rounded-pill d-flex align-items-center gap-2 p-1 pe-3 border" type="button" data-bs-toggle="dropdown">
+                            <img src="" alt="avatar" class="rounded-circle current-user-avatar" width="36" height="36" style="object-fit:cover;">
+                            <span class="fw-bold current-username small text-truncate d-none d-sm-inline" style="max-width:100px;">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-premium border-0 mt-3 p-2 rounded-4">
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/dashboard"><i class="bi bi-grid-1x2 text-primary me-2"></i>Bảng điều khiển</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/leaderboard.html"><i class="bi bi-trophy-fill text-warning me-2"></i>Bảng xếp hạng</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3" href="/dashboard?tab=profile"><i class="bi bi-person me-2"></i>Hồ sơ cá nhân</a></li>
+                            <li><hr class="dropdown-divider opacity-10"></li>
+                            <li><button class="dropdown-item py-2 rounded-3 text-danger fw-bold" id="btnLogout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hire-hero">
+        <div class="container position-relative" style="z-index:1;">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-7">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold mb-3">
+                        🎮 GAME CHUNG • VUI HƠN
+                    </span>
+                    <h1 class="display-5 fw-bold font-outfit mb-3" style="letter-spacing:-2px;">
+                        Tìm bạn đồng hành <span class="text-gradient">ưng ý nhất</span>
+                    </h1>
+                    <p class="text-muted fs-6">
+                        Hàng trăm bạn đồng hành sẵn sàng chơi game, hát karaoke, xem phim hoặc tâm sự cùng bạn.
+                        Thuê ngay theo giờ với giá cực ưu đãi.
+                    </p>
+                </div>
+                <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
+                    <div class="hire-stats-panel p-3 rounded-4 d-inline-flex gap-4 shadow-sm">
+                        <div class="text-center">
+                            <div class="fw-bold fs-4 text-primary">500+</div>
+                            <div class="small text-muted">Đang Online</div>
+                        </div>
+                        <div class="border-end" style="border-color:var(--border-color)!important;"></div>
+                        <div class="text-center">
+                            <div class="fw-bold fs-4 text-success">4.9/5</div>
+                            <div class="small text-muted">Đánh giá</div>
+                        </div>
+                        <div class="border-end" style="border-color:var(--border-color)!important;"></div>
+                        <div class="text-center">
+                            <div class="fw-bold fs-4 text-warning">12K+</div>
+                            <div class="small text-muted">Phiên thuê</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hire-search-bar d-flex align-items-center mb-4" style="max-width:700px;">
+                <i class="bi bi-search text-muted ms-3 fs-5"></i>
+                <input type="text" id="hire-search-input" class="form-control flex-grow-1"
+                       placeholder="Tìm theo tên, kỹ năng, dịch vụ...">
+                <button class="btn btn-primary rounded-pill px-4 py-2 fw-bold me-1" onclick="hirePage.filterCompanions()">
+                    <i class="bi bi-search me-1 d-none d-sm-inline"></i>Tìm kiếm
+                </button>
+            </div>
+
+            <!-- Service Category Pills -->
+            <div class="service-pills mb-2">
+                <button class="service-pill active" data-service="all"><i class="bi bi-grid-3x3-gap me-1"></i>Tất cả</button>
+                <button class="service-pill border border-warning" data-service="vip-auction" style="color:#fbbf24;background:rgba(251,191,36,0.05);"><i class="bi bi-trophy-fill me-1 text-warning"></i>Đấu giá VIP</button>
+                <button class="service-pill" data-service="gaming"><i class="bi bi-controller me-1"></i>Chơi Game</button>
+                <button class="service-pill" data-service="karaoke"><i class="bi bi-music-note-beamed me-1"></i>Karaoke</button>
+                <button class="service-pill" data-service="chat"><i class="bi bi-chat-heart me-1"></i>Trò chuyện</button>
+                <button class="service-pill" data-service="movie"><i class="bi bi-film me-1"></i>Xem phim</button>
+                <button class="service-pill" data-service="event"><i class="bi bi-calendar-event me-1"></i>Sự kiện</button>
+                <button class="service-pill" data-service="teaching"><i class="bi bi-mortarboard me-1"></i>Coach</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="container pb-5">
+        
+        <!-- VIP Auction Section (Premium Showcase) -->
+        <section id="vip-auction-section" class="auction-section p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 pb-3 auction-section-header">
+                <div>
+                    <h4 class="fw-bold mb-1 text-gradient font-outfit" style="letter-spacing:-1px; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        🏆 SÀN ĐẤU GIÁ GẶP MẶT VIP (Charity)
+                    </h4>
+                    <p class="text-muted small mb-0">Ủng hộ từ thiện & Chia sẻ % cho các bên • Đấu giá gây quỹ giúp đỡ trẻ em nghèo vùng cao • <strong style="color:var(--text-main);"><i class="bi bi-clock-history me-1"></i>Tự động làm mới mỗi ngày</strong></p>
+                </div>
+                <div class="d-none d-md-flex align-items-center gap-2">
+                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold"><i class="bi bi-shield-heart me-1"></i>An toàn & Minh bạch 100%</span>
+                </div>
+            </div>
+            <div class="row g-4" id="vip-auction-list">
+                <!-- Loaded via hire.js -->
+            </div>
+        </section>
+
+        <div class="row g-4">
+            <!-- Sidebar Filters -->
+            <div class="col-lg-3">
+                <div class="hire-sidebar">
+                    <div class="hire-filter-card p-4 mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="fw-bold mb-0"><i class="bi bi-funnel text-primary me-2"></i>Bộ lọc</h6>
+                            <button class="btn btn-sm text-primary fw-bold p-0" id="btn-reset-hire-filters">Xóa lọc</button>
+                        </div>
+
+                        <!-- Price Filter -->
+                        <div class="mb-3">
+                            <div class="hire-filter-title">Mức giá</div>
+                            <select id="hire-price-filter" class="form-select form-select-sm rounded-3" style="background:var(--bg-panel);border-color:var(--border-color);color:var(--text-main);">
+                                <option value="all">Tất cả mức giá</option>
+                                <option value="under100">Dưới 100.000đ/h</option>
+                                <option value="100-200">100.000đ - 200.000đ/h</option>
+                                <option value="over200">Trên 200.000đ/h</option>
+                            </select>
+                        </div>
+
+                        <!-- Rating Filter -->
+                        <div class="mb-3">
+                            <div class="hire-filter-title">Đánh giá</div>
+                            <select id="hire-rating-filter" class="form-select form-select-sm rounded-3" style="background:var(--bg-panel);border-color:var(--border-color);color:var(--text-main);">
+                                <option value="all">Tất cả</option>
+                                <option value="4.5+">4.5 sao trở lên</option>
+                                <option value="4.0+">4.0 sao trở lên</option>
+                            </select>
+                        </div>
+
+                        <!-- Status Filter -->
+                        <div class="mb-3">
+                            <div class="hire-filter-title">Trạng thái</div>
+                            <select id="hire-status-filter" class="form-select form-select-sm rounded-3" style="background:var(--bg-panel);border-color:var(--border-color);color:var(--text-main);">
+                                <option value="all">Tất cả</option>
+                                <option value="online">Đang online</option>
+                                <option value="busy">Đang bận</option>
+                                <option value="offline">Ngoại tuyến</option>
+                            </select>
+                        </div>
+
+                        <!-- Sort -->
+                        <div>
+                            <div class="hire-filter-title">Sắp xếp theo</div>
+                            <select id="hire-sort-filter" class="form-select form-select-sm rounded-3" style="background:var(--bg-panel);border-color:var(--border-color);color:var(--text-main);">
+                                <option value="default">Mặc định</option>
+                                <option value="price-low">Giá thấp → cao</option>
+                                <option value="price-high">Giá cao → thấp</option>
+                                <option value="rating">Đánh giá cao nhất</option>
+                                <option value="online">Online trước</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Companion Cards Grid -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="results-info"><i class="bi bi-people-fill me-1"></i><span id="results-count">0 bạn đồng hành</span></div>
+                </div>
+                <div class="row g-3" id="companion-list">
+                    <!-- Loaded via hire.js -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ BOOKING HISTORY ============ -->
+        <section id="booking-history-section" class="mt-5 d-none">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold mb-0"><i class="bi bi-clock-history text-primary me-2"></i>Lịch sử thuê</h4>
+            </div>
+            <div id="booking-history-list">
+                <!-- Rendered by bookingManager -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ VIP AUCTION BID MODAL ============ -->
+    <div class="modal fade" id="auctionBidModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-premium rounded-4 overflow-hidden" style="background:var(--bg-card);">
+                <div class="modal-header border-0 px-4 pt-4 pb-0">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:44px;height:44px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);">
+                            <i class="bi bi-trophy-fill text-warning fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0 font-outfit text-warning">Tham gia Đấu giá VIP</h5>
+                            <span class="small text-muted">Đặc quyền gặp mặt & Gây quỹ từ thiện</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" id="auctionBidModalClose"></button>
+                </div>
+                <div class="modal-body p-4 text-start" id="auction-bid-body">
+                    <!-- Dynamic bidding wizard rendered by hire.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ COMPANION DETAIL MODAL ============ -->
+    <div class="modal fade" id="companionDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-premium rounded-4 overflow-hidden" style="background:var(--bg-card);">
+                <!-- Header Image -->
+                <div class="companion-detail-header">
+                    <img src="" id="detail-companion-img" alt="Companion">
+                    <div class="overlay-info">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <h3 class="fw-bold mb-0" id="detail-companion-name">Name</h3>
+                            <span class="small" id="detail-companion-verified"></span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 small">
+                            <span id="detail-companion-status"></span>
+                            <span id="detail-companion-location"></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <!-- Rating -->
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="rating-stars" id="detail-companion-rating"></div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="d-flex align-items-center justify-content-between mb-4 p-3 rounded-4" style="background:rgba(99,102,241,0.05);border:1px solid rgba(99,102,241,0.1);">
+                        <div>
+                            <div class="text-muted small fw-bold">Giá dịch vụ</div>
+                            <div class="companion-price-tag fs-4" id="detail-companion-price">0đ/giờ</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary rounded-pill px-3 fw-bold" id="detail-btn-chat">
+                                <i class="bi bi-chat-dots me-1"></i>Chat
+                            </button>
+                            <button class="btn btn-primary rounded-pill px-4 fw-bold" id="detail-btn-hire">
+                                <i class="bi bi-lightning-fill me-1"></i>Thuê ngay
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bio -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-uppercase small text-primary mb-2" style="letter-spacing:1px;">Giới thiệu</h6>
+                        <p class="text-muted" id="detail-companion-bio">Bio</p>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-uppercase small text-primary mb-2" style="letter-spacing:1px;">Dịch vụ cung cấp</h6>
+                        <div class="d-flex flex-wrap gap-2" id="detail-companion-services"></div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-uppercase small text-primary mb-2" style="letter-spacing:1px;">Kỹ năng</h6>
+                        <div class="d-flex flex-wrap gap-2" id="detail-companion-skills"></div>
+                    </div>
+
+                    <!-- Availability -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-uppercase small text-primary mb-2" style="letter-spacing:1px;">Lịch trống trong tuần</h6>
+                        <div id="detail-companion-avail"></div>
+                    </div>
+
+                    <!-- Reviews -->
+                    <div class="mb-3">
+                        <h6 class="fw-bold text-uppercase small text-primary mb-2" style="letter-spacing:1px;">Đánh giá gần đây</h6>
+                        <div id="detail-companion-reviews"></div>
+                    </div>
+
+                    <!-- Report/Block -->
+                    <div class="text-center pt-3 border-top" style="border-color:var(--border-color)!important;">
+                        <span class="btn-report me-3" onclick="api.toast('Đã gửi báo cáo. Chúng tôi sẽ xem xét.','info')">
+                            <i class="bi bi-flag me-1"></i>Báo cáo
+                        </span>
+                        <span class="btn-report" onclick="api.toast('Đã chặn người dùng này.','info')">
+                            <i class="bi bi-slash-circle me-1"></i>Chặn
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ BOOKING WIZARD MODAL ============ -->
+    <div class="modal fade" id="bookingWizardModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-premium rounded-4 overflow-hidden" style="background:var(--bg-card);">
+                <div class="modal-header border-0 px-4 pt-4 pb-0">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:44px;height:44px;background:rgba(99,102,241,0.1);">
+                            <i class="bi bi-calendar-check text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">Đặt lịch thuê</h5>
+                            <span class="small text-muted">EntConnect Booking</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4" id="booking-wizard-body">
+                    <!-- Content rendered by booking.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ HIRE PAYMENT MODAL ============ -->
+    <div class="modal fade" id="hirePaymentModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-premium rounded-4 overflow-hidden" style="background:var(--bg-card);">
+
+                <!-- Modal Header -->
+                <div class="modal-header border-0 px-4 pt-4 pb-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center justify-content-center rounded-3"
+                             style="width:48px;height:48px;background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(139,92,246,0.15));">
+                            <i class="bi bi-shield-lock-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0">Thuê ngay</h5>
+                            <span class="small text-muted">EntConnect Secure Checkout</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" id="hirePaymentModalClose"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body px-4 pb-4 pt-3" id="hire-payment-body">
+                    <!-- Injected dynamically -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="mt-5" style="background:#0f172a;">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-3"><i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>EntConnect</h5>
+                    <p class="text-white-50 small">Nền tảng kết nối người dùng cho các hoạt động giải trí và tương tác trực tuyến hàng đầu Việt Nam.</p>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="text-white fw-bold mb-3">Liên kết</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="/" class="text-white-50 text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="/discover" class="text-white-50 text-decoration-none">Khám phá</a></li>
+                        <li class="mb-2"><a href="/hire.html" class="text-white-50 text-decoration-none">Thuê bạn</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-white fw-bold mb-3">Dịch vụ</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><span class="text-white-50">Chơi Game chung</span></li>
+                        <li class="mb-2"><span class="text-white-50">Karaoke Online</span></li>
+                        <li class="mb-2"><span class="text-white-50">Trò chuyện & Tâm sự</span></li>
+                        <li class="mb-2"><span class="text-white-50">Đồng hành sự kiện</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-white fw-bold mb-3">Liên hệ</h6>
+                    <p class="text-white-50 small mb-2"><i class="bi bi-envelope me-2"></i>support@entconnect.vn</p>
+                    <p class="text-white-50 small"><i class="bi bi-telephone me-2"></i>1900 6868</p>
+                </div>
+            </div>
+            <hr class="border-secondary opacity-25 my-4">
+            <p class="text-center text-white-50 small mb-0">&copy; 2026 EntConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/hire-data.js"></script>
+    <script src="/js/payment.js"></script>
+    <script src="/js/review.js"></script>
+    <script src="/js/booking.js"></script>
+    <script src="/js/hire-payment.js"></script>
+    <script src="/js/hire.js"></script>
+    <script src="/js/ai-assistant.js"></script>
+    
+    <!-- Membership & Gamification System -->
+    <script src="/js/exp-system.js"></script>
+    <script src="/js/achievements.js"></script>
+    <script src="/js/daily-reward.js"></script>
+    <script src="/js/membership.js"></script>
+
+    <!-- 🎨 Appearance Studio System -->
+    <script src="/js/theme-presets.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script src="/js/appearance-studio.js"></script>
+</body>
+</html>

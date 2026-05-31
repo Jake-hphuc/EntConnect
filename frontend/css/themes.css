@@ -1,0 +1,484 @@
+/*
+=======================================================
+  EntConnect — Appearance Studio: Theme Definitions
+  themes.css — Pure CSS Variable Architecture
+  Version: 2.0 | Safe extension of existing style.css
+=======================================================
+*/
+
+/* ─────────────────────────────────────────────────────
+   FONT IMPORTS — All supported font styles
+───────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────────────────
+   DEFAULT THEME — Overrides :root via data attribute
+   This is always the base. Theme classes extend these.
+───────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────
+   THEME 1 — NEON GAMING (dark blue + purple cyber glow)
+───────────────────────────────────────────────────── */
+[data-theme="neon-gaming"] {
+    --primary:        #7c3aed;
+    --primary-light:  #a78bfa;
+    --primary-dark:   #5b21b6;
+    --secondary:      #06b6d4;
+
+    --bg-body:        #050714;
+    --bg-panel:       rgba(10, 11, 30, 0.82);
+    --bg-card:        #0d0f2b;
+    --text-main:      #e2e8f0;
+    --text-muted:     #7c8db5;
+    --border-color:   rgba(124, 58, 237, 0.25);
+    --glass-border:   rgba(124, 58, 237, 0.3);
+    --glass-bg:       rgba(10, 11, 30, 0.65);
+    --glass-bg-hover: rgba(10, 11, 30, 0.85);
+    --shadow-premium: 0 20px 60px rgba(124, 58, 237, 0.35);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5);
+    --shadow-md:      0 4px 16px rgba(124, 58, 237, 0.2);
+    --shadow-lg:      0 10px 40px rgba(0,0,0,0.5);
+
+    /* Accent system */
+    --accent-glow:    rgba(124, 58, 237, 0.6);
+    --accent-neon:    #7c3aed;
+    --btn-glow:       0 0 20px rgba(124, 58, 237, 0.5), 0 8px 25px rgba(124, 58, 237, 0.3);
+
+    /* Card style */
+    --card-bg-style:  rgba(13, 15, 43, 0.9);
+    --card-border:    rgba(124, 58, 237, 0.3);
+    --card-glow:      0 0 20px rgba(124, 58, 237, 0.15);
+
+    /* Background gradient */
+    --theme-bg-gradient: radial-gradient(ellipse at 15% 15%, rgba(124,58,237,0.25) 0%, transparent 55%),
+                         radial-gradient(ellipse at 85% 85%, rgba(6,182,212,0.15) 0%, transparent 55%),
+                         radial-gradient(ellipse at 50% 100%, rgba(91,33,182,0.2) 0%, transparent 50%);
+    --theme-bg-anim: animGamingBg;
+
+    /* Chat theme */
+    --chat-bubble-me:     linear-gradient(135deg, #7c3aed, #5b21b6);
+    --chat-bubble-other:  #0d0f2b;
+    --chat-border-other:  rgba(124, 58, 237, 0.3);
+    --chat-text-other:    #e2e8f0;
+}
+
+/* ─────────────────────────────────────────────────────
+   THEME 2 — MIDNIGHT PURPLE (premium dark glass)
+───────────────────────────────────────────────────── */
+[data-theme="midnight-purple"] {
+    --primary:        #8b5cf6;
+    --primary-light:  #a78bfa;
+    --primary-dark:   #6d28d9;
+    --secondary:      #ec4899;
+
+    --bg-body:        #0a0118;
+    --bg-panel:       rgba(15, 5, 35, 0.85);
+    --bg-card:        #130726;
+    --text-main:      #ede9fe;
+    --text-muted:     #9478d1;
+    --border-color:   rgba(139, 92, 246, 0.2);
+    --glass-border:   rgba(139, 92, 246, 0.35);
+    --glass-bg:       rgba(20, 7, 50, 0.7);
+    --glass-bg-hover: rgba(20, 7, 50, 0.9);
+    --shadow-premium: 0 20px 60px rgba(109, 40, 217, 0.4);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5);
+    --shadow-md:      0 4px 16px rgba(109, 40, 217, 0.25);
+    --shadow-lg:      0 10px 40px rgba(0,0,0,0.5);
+
+    --accent-glow:    rgba(139, 92, 246, 0.6);
+    --accent-neon:    #8b5cf6;
+    --btn-glow:       0 0 20px rgba(139, 92, 246, 0.5), 0 8px 25px rgba(139, 92, 246, 0.3);
+
+    --card-bg-style:  rgba(19, 7, 38, 0.9);
+    --card-border:    rgba(139, 92, 246, 0.3);
+    --card-glow:      0 0 25px rgba(139, 92, 246, 0.15);
+
+    --theme-bg-gradient: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.3) 0%, transparent 55%),
+                         radial-gradient(ellipse at 80% 80%, rgba(236,72,153,0.2) 0%, transparent 55%),
+                         radial-gradient(ellipse at 50% 50%, rgba(109,40,217,0.15) 0%, transparent 60%);
+    --theme-bg-anim: animPurpleBg;
+
+    --chat-bubble-me:     linear-gradient(135deg, #8b5cf6, #6d28d9);
+    --chat-bubble-other:  #130726;
+    --chat-border-other:  rgba(139, 92, 246, 0.3);
+    --chat-text-other:    #ede9fe;
+}
+
+/* ─────────────────────────────────────────────────────
+   THEME 3 — SUNSET CHILL (warm orange gradient)
+───────────────────────────────────────────────────── */
+[data-theme="sunset-chill"] {
+    --primary:        #f97316;
+    --primary-light:  #fb923c;
+    --primary-dark:   #ea580c;
+    --secondary:      #f43f5e;
+
+    --bg-body:        #0f0a08;
+    --bg-panel:       rgba(20, 10, 5, 0.85);
+    --bg-card:        #1a0f0a;
+    --text-main:      #fef3e2;
+    --text-muted:     #c4946a;
+    --border-color:   rgba(249, 115, 22, 0.2);
+    --glass-border:   rgba(249, 115, 22, 0.3);
+    --glass-bg:       rgba(26, 15, 10, 0.7);
+    --glass-bg-hover: rgba(26, 15, 10, 0.9);
+    --shadow-premium: 0 20px 60px rgba(234, 88, 12, 0.35);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5);
+    --shadow-md:      0 4px 16px rgba(249, 115, 22, 0.2);
+    --shadow-lg:      0 10px 40px rgba(0,0,0,0.5);
+
+    --accent-glow:    rgba(249, 115, 22, 0.6);
+    --accent-neon:    #f97316;
+    --btn-glow:       0 0 20px rgba(249, 115, 22, 0.5), 0 8px 25px rgba(249, 115, 22, 0.3);
+
+    --card-bg-style:  rgba(26, 15, 10, 0.9);
+    --card-border:    rgba(249, 115, 22, 0.3);
+    --card-glow:      0 0 25px rgba(249, 115, 22, 0.15);
+
+    --theme-bg-gradient: radial-gradient(ellipse at 10% 10%, rgba(249,115,22,0.3) 0%, transparent 55%),
+                         radial-gradient(ellipse at 90% 80%, rgba(244,63,94,0.2) 0%, transparent 55%),
+                         radial-gradient(ellipse at 50% 50%, rgba(234,88,12,0.15) 0%, transparent 60%);
+    --theme-bg-anim: animSunsetBg;
+
+    --chat-bubble-me:     linear-gradient(135deg, #f97316, #ea580c);
+    --chat-bubble-other:  #1a0f0a;
+    --chat-border-other:  rgba(249, 115, 22, 0.3);
+    --chat-text-other:    #fef3e2;
+}
+
+/* ─────────────────────────────────────────────────────
+   THEME 4 — EMERALD GLASS (green luxury glass)
+───────────────────────────────────────────────────── */
+[data-theme="emerald-glass"] {
+    --primary:        #059669;
+    --primary-light:  #34d399;
+    --primary-dark:   #047857;
+    --secondary:      #06b6d4;
+
+    --bg-body:        #030f0a;
+    --bg-panel:       rgba(3, 20, 12, 0.85);
+    --bg-card:        #071a10;
+    --text-main:      #d1fae5;
+    --text-muted:     #5a9b78;
+    --border-color:   rgba(5, 150, 105, 0.2);
+    --glass-border:   rgba(52, 211, 153, 0.3);
+    --glass-bg:       rgba(7, 26, 16, 0.7);
+    --glass-bg-hover: rgba(7, 26, 16, 0.9);
+    --shadow-premium: 0 20px 60px rgba(4, 120, 87, 0.35);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5);
+    --shadow-md:      0 4px 16px rgba(5, 150, 105, 0.2);
+    --shadow-lg:      0 10px 40px rgba(0,0,0,0.5);
+
+    --accent-glow:    rgba(52, 211, 153, 0.6);
+    --accent-neon:    #34d399;
+    --btn-glow:       0 0 20px rgba(5, 150, 105, 0.5), 0 8px 25px rgba(5, 150, 105, 0.3);
+
+    --card-bg-style:  rgba(7, 26, 16, 0.9);
+    --card-border:    rgba(52, 211, 153, 0.3);
+    --card-glow:      0 0 25px rgba(5, 150, 105, 0.15);
+
+    --theme-bg-gradient: radial-gradient(ellipse at 15% 15%, rgba(5,150,105,0.3) 0%, transparent 55%),
+                         radial-gradient(ellipse at 85% 80%, rgba(6,182,212,0.2) 0%, transparent 55%),
+                         radial-gradient(ellipse at 50% 50%, rgba(4,120,87,0.15) 0%, transparent 60%);
+    --theme-bg-anim: animEmeraldBg;
+
+    --chat-bubble-me:     linear-gradient(135deg, #059669, #047857);
+    --chat-bubble-other:  #071a10;
+    --chat-border-other:  rgba(52, 211, 153, 0.3);
+    --chat-text-other:    #d1fae5;
+}
+
+/* ─────────────────────────────────────────────────────
+   THEME 5 — DISCORD DARK (clean dark inspired by Discord)
+───────────────────────────────────────────────────── */
+[data-theme="discord-dark"] {
+    --primary:        #5865f2;
+    --primary-light:  #7983f5;
+    --primary-dark:   #4752c4;
+    --secondary:      #eb459e;
+
+    --bg-body:        #1e1f22;
+    --bg-panel:       rgba(32, 34, 37, 0.95);
+    --bg-card:        #2b2d31;
+    --text-main:      #dbdee1;
+    --text-muted:     #80848e;
+    --border-color:   rgba(255, 255, 255, 0.06);
+    --glass-border:   rgba(255, 255, 255, 0.08);
+    --glass-bg:       rgba(43, 45, 49, 0.8);
+    --glass-bg-hover: rgba(43, 45, 49, 0.95);
+    --shadow-premium: 0 8px 16px rgba(0,0,0,0.4);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md:      0 4px 10px rgba(0,0,0,0.3);
+    --shadow-lg:      0 8px 24px rgba(0,0,0,0.4);
+
+    --accent-glow:    rgba(88, 101, 242, 0.5);
+    --accent-neon:    #5865f2;
+    --btn-glow:       0 0 15px rgba(88, 101, 242, 0.4), 0 6px 20px rgba(88, 101, 242, 0.25);
+
+    --card-bg-style:  #2b2d31;
+    --card-border:    rgba(255, 255, 255, 0.06);
+    --card-glow:      0 2px 10px rgba(0,0,0,0.3);
+
+    --theme-bg-gradient: none;
+    --theme-bg-anim: none;
+
+    --chat-bubble-me:     #5865f2;
+    --chat-bubble-other:  #383a40;
+    --chat-border-other:  transparent;
+    --chat-text-other:    #dbdee1;
+}
+
+/* ─────────────────────────────────────────────────────
+   THEME 6 — SAKURA PINK (pastel pink soft shadow)
+───────────────────────────────────────────────────── */
+[data-theme="sakura-pink"] {
+    --primary:        #db2777;
+    --primary-light:  #f472b6;
+    --primary-dark:   #be185d;
+    --secondary:      #7c3aed;
+
+    --bg-body:        #0d0509;
+    --bg-panel:       rgba(20, 5, 15, 0.85);
+    --bg-card:        #190b14;
+    --text-main:      #fce7f3;
+    --text-muted:     #c47a9a;
+    --border-color:   rgba(219, 39, 119, 0.2);
+    --glass-border:   rgba(244, 114, 182, 0.3);
+    --glass-bg:       rgba(25, 11, 20, 0.7);
+    --glass-bg-hover: rgba(25, 11, 20, 0.9);
+    --shadow-premium: 0 20px 60px rgba(190, 24, 93, 0.35);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5);
+    --shadow-md:      0 4px 16px rgba(219, 39, 119, 0.2);
+    --shadow-lg:      0 10px 40px rgba(0,0,0,0.5);
+
+    --accent-glow:    rgba(244, 114, 182, 0.6);
+    --accent-neon:    #f472b6;
+    --btn-glow:       0 0 20px rgba(219, 39, 119, 0.5), 0 8px 25px rgba(219, 39, 119, 0.3);
+
+    --card-bg-style:  rgba(25, 11, 20, 0.9);
+    --card-border:    rgba(244, 114, 182, 0.3);
+    --card-glow:      0 0 25px rgba(219, 39, 119, 0.15);
+
+    --theme-bg-gradient: radial-gradient(ellipse at 20% 20%, rgba(219,39,119,0.25) 0%, transparent 55%),
+                         radial-gradient(ellipse at 80% 80%, rgba(124,58,237,0.2) 0%, transparent 55%),
+                         radial-gradient(ellipse at 50% 50%, rgba(190,24,93,0.15) 0%, transparent 60%);
+    --theme-bg-anim: animSakuraBg;
+
+    --chat-bubble-me:     linear-gradient(135deg, #db2777, #be185d);
+    --chat-bubble-other:  #190b14;
+    --chat-border-other:  rgba(244, 114, 182, 0.3);
+    --chat-text-other:    #fce7f3;
+}
+
+/* ─────────────────────────────────────────────────────
+   FONT STYLE CLASSES
+───────────────────────────────────────────────────── */
+[data-font="inter"]    { --font-family: 'Inter', sans-serif; }
+[data-font="poppins"]  { --font-family: 'Poppins', sans-serif; }
+[data-font="outfit"]   { --font-family: 'Outfit', sans-serif; }
+[data-font="rajdhani"] { --font-family: 'Rajdhani', sans-serif; }
+
+/* Apply the custom font */
+body { font-family: var(--font-family, 'Plus Jakarta Sans', sans-serif); }
+
+/* ─────────────────────────────────────────────────────
+   ANIMATED BACKGROUND KEYFRAMES
+───────────────────────────────────────────────────── */
+@keyframes animGamingBg {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes animPurpleBg {
+    0%   { background-position: 0% 0%; }
+    50%  { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+@keyframes animSunsetBg {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes animEmeraldBg {
+    0%   { background-position: 50% 0%; }
+    50%  { background-position: 50% 100%; }
+    100% { background-position: 50% 0%; }
+}
+@keyframes animSakuraBg {
+    0%   { background-position: 0% 100%; }
+    50%  { background-position: 100% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
+/* ─────────────────────────────────────────────────────
+   ANIMATED BACKGROUND — applied to body
+───────────────────────────────────────────────────── */
+body.theme-animated-bg {
+    background-image: var(--theme-bg-gradient), linear-gradient(135deg, var(--bg-body) 0%, var(--bg-body) 100%);
+    background-size: 400% 400%;
+    animation: var(--theme-bg-anim, animGamingBg) 12s ease infinite;
+}
+
+/* ─────────────────────────────────────────────────────
+   CARD STYLE VARIANTS
+───────────────────────────────────────────────────── */
+
+/* Glassmorphism */
+body.card-style-glass .event-card,
+body.card-style-glass .glass-card,
+body.card-style-glass .user-card-sm,
+body.card-style-glass .dashboard-stat-card {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: var(--card-glow, var(--shadow-sm));
+}
+
+/* Solid */
+body.card-style-solid .event-card,
+body.card-style-solid .glass-card,
+body.card-style-solid .user-card-sm,
+body.card-style-solid .dashboard-stat-card {
+    background: var(--bg-card) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Neon */
+body.card-style-neon .event-card,
+body.card-style-neon .glass-card,
+body.card-style-neon .user-card-sm,
+body.card-style-neon .dashboard-stat-card {
+    background: var(--card-bg-style, var(--bg-card)) !important;
+    border: 1px solid var(--card-border) !important;
+    box-shadow: var(--card-glow), inset 0 1px 0 rgba(255,255,255,0.05) !important;
+}
+body.card-style-neon .event-card:hover,
+body.card-style-neon .glass-card:hover {
+    box-shadow: var(--card-glow), 0 0 30px var(--accent-glow) !important;
+    border-color: var(--accent-neon) !important;
+}
+
+/* Minimal */
+body.card-style-minimal .event-card,
+body.card-style-minimal .glass-card,
+body.card-style-minimal .user-card-sm,
+body.card-style-minimal .dashboard-stat-card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────────────
+   CHAT THEME VARIANTS
+───────────────────────────────────────────────────── */
+/* Applied to .message-wrapper.me .message-bubble */
+body.chat-discord .message-wrapper.me .message-bubble {
+    background: #5865f2 !important;
+    border-radius: 18px 18px 4px 18px !important;
+}
+body.chat-discord .message-wrapper.others .message-bubble {
+    background: #383a40 !important;
+    border-radius: 18px 18px 18px 4px !important;
+    border: none !important;
+}
+body.chat-cyberpunk .message-wrapper.me .message-bubble {
+    background: linear-gradient(135deg, #7c3aed, #06b6d4) !important;
+    box-shadow: 0 0 15px rgba(124,58,237,0.5) !important;
+}
+body.chat-cyberpunk .message-wrapper.others .message-bubble {
+    background: #0d0f2b !important;
+    border: 1px solid rgba(6,182,212,0.4) !important;
+    box-shadow: 0 0 10px rgba(6,182,212,0.2) !important;
+}
+body.chat-amoled .message-wrapper.me .message-bubble {
+    background: var(--primary) !important;
+}
+body.chat-amoled .message-wrapper.others .message-bubble {
+    background: #111 !important;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+}
+body.chat-messenger .message-wrapper.me .message-bubble {
+    background: linear-gradient(135deg, #0084ff, #0064d2) !important;
+    border-radius: 18px 18px 4px 18px !important;
+}
+body.chat-messenger .message-wrapper.others .message-bubble {
+    background: #f0f0f0 !important;
+    color: #111 !important;
+    border: none !important;
+    border-radius: 18px 18px 18px 4px !important;
+}
+
+/* ─────────────────────────────────────────────────────
+   ANIMATION LEVEL CLASSES
+───────────────────────────────────────────────────── */
+
+/* Dynamic — maximum animations */
+body.anim-dynamic * {
+    transition-duration: 0.4s !important;
+}
+body.anim-dynamic .event-card:hover {
+    transform: translateY(-14px) scale(1.01) !important;
+}
+body.anim-dynamic .btn-primary:hover {
+    box-shadow: var(--btn-glow) !important;
+}
+
+/* Smooth — balanced animations (default) */
+body.anim-smooth * {
+    transition-duration: 0.25s !important;
+}
+
+/* Minimal — subtle */
+body.anim-minimal * {
+    transition-duration: 0.12s !important;
+    animation-duration: 0.3s !important;
+}
+body.anim-minimal .event-card:hover {
+    transform: translateY(-4px) !important;
+}
+
+/* Disabled — no animations */
+body.anim-none * {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+body.anim-none .event-card:hover {
+    transform: none !important;
+}
+
+/* ─────────────────────────────────────────────────────
+   THEME TRANSITION — smooth color switching
+───────────────────────────────────────────────────── */
+body {
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Fast transitioning for CSS variable changes */
+:root {
+    transition: --primary 0.5s, --bg-body 0.5s, --bg-card 0.5s;
+}
+
+/* Apply theme's bg gradient overlay if available */
+[data-theme]:not([data-theme="discord-dark"]) body,
+body[data-theme]:not([data-theme="discord-dark"]) {
+    background-image: var(--theme-bg-gradient);
+}
+
+/* ─────────────────────────────────────────────────────
+   ACCENT COLOR OVERRIDES — applied via JS
+───────────────────────────────────────────────────── */
+[data-accent="violet"]  { --primary: #7c3aed; --primary-light: #a78bfa; --primary-dark: #5b21b6; }
+[data-accent="cyan"]    { --primary: #0891b2; --primary-light: #22d3ee; --primary-dark: #0e7490; }
+[data-accent="rose"]    { --primary: #e11d48; --primary-light: #fb7185; --primary-dark: #be123c; }
+[data-accent="amber"]   { --primary: #d97706; --primary-light: #fbbf24; --primary-dark: #b45309; }
+[data-accent="emerald"] { --primary: #059669; --primary-light: #34d399; --primary-dark: #047857; }
+[data-accent="indigo"]  { --primary: #6366f1; --primary-light: #818cf8; --primary-dark: #4f46e5; }
+[data-accent="pink"]    { --primary: #db2777; --primary-light: #f472b6; --primary-dark: #be185d; }
+[data-accent="orange"]  { --primary: #ea580c; --primary-light: #fb923c; --primary-dark: #c2410c; }

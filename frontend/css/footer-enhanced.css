@@ -1,0 +1,178 @@
+/* Footer Enhanced Styles */
+.footer-link-enhanced {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    padding-bottom: 2px;
+}
+
+.footer-link-enhanced::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-image: linear-gradient(to right, #6366f1, #a855f7);
+    transition: width 0.3s ease;
+}
+
+.footer-link-enhanced:hover {
+    color: #fff !important;
+    transform: translateX(5px);
+}
+
+.footer-link-enhanced:hover::after {
+    width: 100%;
+}
+
+/* Newsletter Validation */
+.newsletter-input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.newsletter-input.is-invalid {
+    border-color: #ef4444 !important;
+    animation: shake 0.5s;
+    box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25) !important;
+}
+
+.newsletter-input.is-valid {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25) !important;
+}
+
+.newsletter-error-msg {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+    left: 15px;
+}
+
+/* Button Loading */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+.btn-loading .icon-normal {
+    display: none;
+}
+.btn-loading .icon-loading {
+    display: inline-block !important;
+    animation: spin 1s linear infinite;
+}
+
+/* Modal Styling */
+.modal-glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Back To Top & Mini Chat */
+.back-to-top-btn, .mini-chat-btn {
+    position: fixed;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.back-to-top-btn {
+    right: 20px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.mini-chat-btn {
+    right: 75px;
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
+}
+
+.back-to-top-btn.visible, .mini-chat-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-btn:hover, .mini-chat-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    color: white;
+}
+
+/* Fix animation shake for validation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Social Links */
+.social-link-enhanced {
+    transition: all 0.3s ease;
+}
+.social-link-enhanced:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Accordion Custom Styling */
+.accordion-custom .accordion-item {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 0.5rem;
+    border-radius: 8px !important;
+}
+.accordion-custom .accordion-button {
+    background: transparent;
+    color: white;
+    box-shadow: none;
+    border-radius: 8px !important;
+}
+.accordion-custom .accordion-button:not(.collapsed) {
+    background: rgba(99, 102, 241, 0.1);
+    color: #8b5cf6;
+}
+.accordion-custom .accordion-body {
+    color: #cbd5e1;
+}
+
+/* Places Grid */
+.places-grid .place-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 15px;
+    background: rgba(255,255,255,0.02);
+    transition: all 0.3s ease;
+}
+.places-grid .place-card:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Rules Card */
+.rule-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #6366f1;
+}

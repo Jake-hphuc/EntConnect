@@ -1,0 +1,99 @@
+/* design_system.css - Design tokens for EntConnect */
+:root {
+  /* Color palette */
+  --primary-hue: 210;   /* blue */
+  --primary-sat: 80%;
+  --primary-light: 55%;
+  --primary-color: hsl(var(--primary-hue), var(--primary-sat), var(--primary-light));
+  --primary-bg: hsla(var(--primary-hue), var(--primary-sat), var(--primary-light), 0.1);
+  --accent-hue: 330;   /* pink */
+  --accent-sat: 70%;
+  --accent-light: 60%;
+  --accent-color: hsl(var(--accent-hue), var(--accent-sat), var(--accent-light));
+  --gradient-primary: linear-gradient(135deg, hsl(210,80%,55%), hsl(270,70%,60%));
+  --gradient-dark: linear-gradient(135deg, #0d1117, #1e293b);
+  /* Typography */
+  --font-base: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 2rem;
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+  --primary-light: 45%;
+  --primary-bg: hsla(var(--primary-hue), var(--primary-sat), var(--primary-light), 0.2);
+  --accent-light: 50%;
+  --gradient-primary: linear-gradient(135deg, hsl(210,80%,45%), hsl(270,70%,50%));
+  --gradient-dark: linear-gradient(135deg, #111827, #1f2937);
+}
+
+/* Global resets */
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  background: var(--gradient-dark);
+  color: #e5e7eb;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Glassmorphism card utility */
+.glass-card {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px 0 rgba(31,38,135,0.5);
+}
+
+/* Button premium style */
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: background 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--primary-color);
+}
+
+/* Utility classes */
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.px-md { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+
+/* Micro-animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards;
+  animation-delay: var(--animation-delay, 0s);
+}

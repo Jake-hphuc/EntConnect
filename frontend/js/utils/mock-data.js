@@ -1,0 +1,136 @@
+export const marketplaceUsers = [
+    {
+        id: 1,
+        name: "Minh Anh",
+        avatar: "https://i.pravatar.cc/150?img=1",
+        rating: 4.8,
+        reviewsCount: 124,
+        reputation: 1500,
+        gender: "female",
+        age: 22,
+        level: "Diamond",
+        online: true
+    },
+    {
+        id: 2,
+        name: "Tuấn Kiệt",
+        avatar: "https://i.pravatar.cc/150?img=11",
+        rating: 4.9,
+        reviewsCount: 89,
+        reputation: 1800,
+        gender: "male",
+        age: 25,
+        level: "Master",
+        online: false
+    },
+    {
+        id: 3,
+        name: "Hải Yến",
+        avatar: "https://i.pravatar.cc/150?img=5",
+        rating: 4.7,
+        reviewsCount: 56,
+        reputation: 950,
+        gender: "female",
+        age: 20,
+        level: "Platinum",
+        online: true
+    },
+    {
+        id: 4,
+        name: "Quốc Đạt",
+        avatar: "https://i.pravatar.cc/150?img=15",
+        rating: 4.5,
+        reviewsCount: 34,
+        reputation: 600,
+        gender: "male",
+        age: 28,
+        level: "Gold",
+        online: true
+    }
+];
+
+export const marketplacePosts = [
+    {
+        id: 101,
+        type: "event",
+        title: "Đêm nhạc Acoustic Acoustic Night",
+        thumbnail: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop",
+        category: "music",
+        description: "Tham gia cùng chúng mình vào một đêm nhạc chill nhẹ nhàng vào cuối tuần này. Có sẵn nhạc cụ cho các bạn đam mê ca hát.",
+        datetime: "2026-06-15T19:30",
+        location: "Quán Cafe Chill, Quận 1, TP.HCM",
+        slots: 20,
+        joined: 8,
+        price: 50000,
+        priceUnit: "buổi",
+        tags: ["Acoustic", "Chill", "Cuối tuần"],
+        genderPref: "any",
+        agePref: "18-30",
+        mode: "offline",
+        authorId: 1,
+        status: "open"
+    },
+    {
+        id: 102,
+        type: "teammate",
+        title: "Cần tìm Dual rank Liên Minh Huyền Thoại",
+        thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop",
+        category: "gaming",
+        description: "Đang kẹt ở rank Lục Bảo, cần tìm một bạn đi rừng hoặc đường giữa gánh tạ. Yêu cầu chơi buổi tối từ 8h-11h.",
+        datetime: "2026-05-20T20:00",
+        location: "Online",
+        slots: 1,
+        joined: 0,
+        price: 0,
+        priceUnit: "giờ",
+        tags: ["LOL", "Rank", "Giải trí"],
+        genderPref: "any",
+        agePref: "any",
+        mode: "online",
+        authorId: 2,
+        status: "open"
+    },
+    {
+        id: 103,
+        type: "hire",
+        title: "Trò chuyện tâm sự đêm khuya / Chơi game cùng",
+        thumbnail: "https://images.unsplash.com/photo-1616091093714-c64882e9ab55?q=80&w=600&auto=format&fit=crop",
+        category: "chat",
+        description: "Nhận trò chuyện tâm sự, lắng nghe bạn kể chuyện. Có thể chơi cùng các game nhẹ nhàng như Play Together, Liên Quân.",
+        datetime: "2026-05-18T22:00",
+        location: "Online",
+        slots: 1,
+        joined: 0,
+        price: 100000,
+        priceUnit: "giờ",
+        tags: ["Lắng nghe", "Tâm sự", "Liên Quân"],
+        genderPref: "any",
+        agePref: "any",
+        mode: "online",
+        authorId: 3,
+        status: "open"
+    },
+    {
+        id: 104,
+        type: "parttime",
+        title: "Tuyển người đi xem phim rạp cùng (Bao vé + Nước)",
+        thumbnail: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=600&auto=format&fit=crop",
+        category: "movies",
+        description: "Có vé xem phim suất chiếu sớm nhưng bị leo cây. Cần tìm 1 bạn nữ đi cùng cho đỡ buồn.",
+        datetime: "2026-05-16T19:00",
+        location: "CGV Landmark 81",
+        slots: 1,
+        joined: 0,
+        price: 200000,
+        priceUnit: "buổi",
+        tags: ["Xem phim", "Cuối tuần"],
+        genderPref: "female",
+        agePref: "18-25",
+        mode: "offline",
+        authorId: 4,
+        status: "open"
+    }
+];
+
+export const marketplaceBookings = [];
+export const marketplaceReviews = [];

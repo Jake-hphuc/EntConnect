@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EntConnect - Kết nối đam mê, bứt phá giới hạn</title>
+    <!-- Meta SEO -->
+    <meta name="description" content="Khám phá và tham gia các hoạt động giải trí, kết bạn cùng sở thích với EntConnect - Nền tảng kết nối 4.0.">
+    <!-- SEO: Additional meta tags can be added here for better search engine visibility -->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- 🎨 Appearance Studio -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/appearance-studio.css">
+    <link rel="stylesheet" href="/chat-room.css">
+    <link rel="stylesheet" href="/payment.css">
+    <link rel="stylesheet" href="/css/home-extra.css">
+    <link rel="stylesheet" href="/css/footer-enhanced.css">
+    <link rel="stylesheet" href="/css/membership.css">
+    <script src="/js/data.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>
+                <span>Ent<span class="text-primary">Connect</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-grid-fill fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold small text-uppercase gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/discover">Khám phá</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community">Cộng đồng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hire.html">Thuê bạn</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary" href="/marketplace.html">Chợ kết nối <i class="bi bi-stars"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/leaderboard.html">Xếp hạng</a></li>
+                </ul>
+                <!-- Theme Toggle -->
+                <div class="theme-toggle me-3 d-flex align-items-center">
+                    <button id="theme-toggle-btn" class="btn btn-link text-dark p-0 border-0 fs-5">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </div>
+                
+                <!-- Guest UI -->
+                <div class="d-flex gap-2 auth-guest">
+                    <button class="btn btn-link text-decoration-none text-main fw-bold px-3 py-2" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Bắt đầu</button>
+                </div>
+                
+                <!-- User UI -->
+                <div class="auth-user d-none d-flex align-items-center gap-3">
+                    <!-- Membership Badge -->
+                    <div id="navbar-rank-badge" class="rank-badge-nav d-none d-md-flex"></div>
+                    
+                    <!-- Notification Bell -->
+                    <div class="dropdown">
+                        <button class="btn btn-link text-dark p-0 border-0 fs-5 position-relative" type="button" data-bs-toggle="dropdown" id="notificationBellBtn">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-none" id="notificationBadge">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end shadow-premium border-0 mt-3 p-0 rounded-4" style="width: 320px; max-height: 400px; overflow: hidden;">
+                            <div class="p-3 border-bottom bg-light">
+                                <h6 class="mb-0 fw-bold">Thông báo</h6>
+                            </div>
+                            <div id="notificationList" class="overflow-auto" style="max-height: 300px;">
+                                <div class="text-center p-4 text-muted small">
+                                    Không có thông báo mới
+                                </div>
+                            </div>
+                            <div class="p-2 border-top text-center bg-light">
+                                <a href="#" class="text-decoration-none small fw-bold text-primary">Xem tất cả</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn glass-panel dropdown-toggle rounded-pill d-flex align-items-center gap-2 p-1 pe-3 border" type="button" data-bs-toggle="dropdown">
+                            <img src="" alt="avatar" class="rounded-circle current-user-avatar" width="36" height="36" style="object-fit:cover;">
+                            <span class="fw-bold current-username small text-truncate d-none d-sm-inline" style="max-width: 100px;">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-premium border-0 mt-3 p-2 rounded-4">
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/dashboard"><i class="bi bi-grid-1x2 text-primary me-2"></i>Bảng điều khiển</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/leaderboard.html"><i class="bi bi-trophy-fill text-warning me-2"></i>Bảng xếp hạng</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3" href="/dashboard?tab=profile"><i class="bi bi-person me-2"></i>Hồ sơ cá nhân</a></li>
+                            <li class="admin-only d-none"><a class="dropdown-item py-2 rounded-3 text-warning fw-bold" href="/admin-dashboard.html"><i class="bi bi-shield-lock-fill me-2"></i>Quản trị hệ thống</a></li>
+                            <li><hr class="dropdown-divider opacity-10"></li>
+                            <li><button class="dropdown-item py-2 rounded-3 text-danger fw-bold" id="btnLogout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero-section">
+            <div class="container py-lg-5">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-lg-10">
+                        <div class="reveal-on-scroll active">
+                            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold mb-4">
+                                ✨ NỀN TẢNG KẾT NỐI GIẢI TRÍ 4.0
+                            </span>
+                            <h1 class="hero-title fw-bold">Kết nối đam mê,<br><span class="text-gradient">Bứt phá giới hạn</span></h1>
+                            <p class="text-muted fs-5 mb-5 mx-auto" style="max-width: 650px;">
+                                Tìm kiếm sự kiện, hoạt động và những người bạn cùng sở thích giải trí chỉ trong vài giây.
+                            </p>
+                            
+                            <!-- Search Bar Premium -->
+                            <div class="search-container mb-5">
+                                <form id="hero-search-form" class="row g-0 align-items-center">
+                                    <div class="col-12 col-md-9 search-input-group position-relative">
+                                        <i class="bi bi-search text-primary fs-5"></i>
+                                        <input type="text" id="main-search-input" class="form-control border-0 bg-transparent fs-5" 
+                                               placeholder="Bạn muốn tham gia hoạt động gì?" autocomplete="off">
+                                        
+                                        <!-- Suggestions Dropdown -->
+                                        <div id="search-suggestions-home" class="search-dropdown glass-premium shadow-premium d-none" 
+                                             style="position: absolute; top: 110%; left: 0; width: 100%; z-index: 1000; border-radius: 20px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3 p-1 d-none d-md-block">
+                                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill shadow-lg">Tìm kiếm</button>
+                                    </div>
+                                    <div class="col-12 d-md-none mt-3">
+                                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill">Tìm kiếm ngay</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Trending Tags -->
+                            <div class="d-flex flex-wrap justify-content-center gap-2 opacity-75">
+                                <span class="small fw-bold text-muted me-2">Xu hướng:</span>
+                                <a href="#" class="text-decoration-none text-primary small fw-bold">#Gaming</a>
+                                <a href="#" class="text-decoration-none text-primary small fw-bold mx-2">#AcousticNight</a>
+                                <a href="#" class="text-decoration-none text-primary small fw-bold">#Boardgame</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOME EXTRA: Quick Actions ===== -->
+        <section class="hx-quick-actions-section">
+            <div class="container">
+                <div class="hx-quick-actions-grid" id="hx-quick-actions-container">
+                    <!-- Rendered by home-extra.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOME EXTRA: Stats Counter ===== -->
+        <section class="hx-stats-section">
+            <div class="container">
+                <div class="hx-stats-grid" id="hx-stats-container">
+                    <!-- Rendered by home-extra.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Filters -->
+        <section class="py-3 bg-body border-bottom sticky-top shadow-sm" style="top: 76px; z-index: 1000;">
+            <div class="container">
+                <div class="d-flex align-items-center gap-2 overflow-auto pb-1 scroll-hide" id="category-filters">
+                    <div class="category-pill active" data-category="all">Tất cả</div>
+                    <div class="category-pill" data-category="gaming">🕹️ Gaming</div>
+                    <div class="category-pill" data-category="sports">⚽ Thể thao</div>
+                    <div class="category-pill" data-category="music">🎸 Âm nhạc</div>
+                    <div class="category-pill" data-category="movies">🎬 Phim ảnh</div>
+                    <div class="category-pill" data-category="food">🍕 Ẩm thực</div>
+                    <div class="category-pill" data-category="travel">✈️ Du lịch</div>
+                    <div class="category-pill" data-category="board_games">🎲 Boardgame</div>
+                    <div class="category-pill" data-category="technology">💻 Công nghệ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section class="py-5">
+            <div class="container">
+                
+                <!-- Personalized Recommendations -->
+                <div id="recommended-section" class="mb-5 auth-user d-none reveal-on-scroll">
+                    <div class="section-header mb-4">
+                        <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill fw-bold mb-2">🔥 AI GỢI Ý</span>
+                        <h2 class="fw-bold mb-0">Dành riêng cho bạn</h2>
+                    </div>
+                    <div class="row g-4" id="recommended-container">
+                        <!-- Loaded via main.js -->
+                    </div>
+                </div>
+
+                <!-- Buddy Section -->
+                <div id="buddy-section" class="mb-5 py-4 reveal-on-scroll">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div class="col-md-6">
+                            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold mb-2">🤝 KẾT NỐI</span>
+                            <h2 class="fw-bold mb-0">Bạn đồng hành lý tưởng</h2>
+                        </div>
+                        <a href="#" class="btn btn-link text-primary text-decoration-none fw-bold p-0 d-none d-md-block">Gợi ý khác <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="d-flex gap-4 overflow-auto pb-4 px-1 scroll-hide" id="users-recommend-container">
+                        <!-- User Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Trending Events -->
+                <div id="trending-section" class="reveal-on-scroll">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div>
+                            <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill fw-bold mb-2">🌟 KHÁM PHÁ</span>
+                            <h2 class="fw-bold mb-0">Sự kiện nổi bật</h2>
+                        </div>
+                        <a href="/discover" class="btn btn-primary rounded-pill px-4 shadow-sm">Xem tất cả</a>
+                    </div>
+                    <div class="row g-4" id="trending-container">
+                        <!-- Event Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Featured Communities Section -->
+                <div id="featured-communities-section" class="mt-5 pt-4 reveal-on-scroll">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end border-bottom pb-3">
+                        <div>
+                            <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill fw-bold mb-2">🌐 KẾT NỐI</span>
+                            <h2 class="fw-bold mb-0">Cộng đồng nổi bật</h2>
+                        </div>
+                        <a href="/community" class="btn btn-outline-success rounded-pill px-4 shadow-sm">Xem tất cả</a>
+                    </div>
+                    <div class="row g-4" id="home-community-list">
+                        <!-- Dynamic Community Cards will be injected here via main.js -->
+                    </div>
+                </div>
+
+                <!-- Upcoming Events with Tabs (Matching User Image) -->
+                <div id="upcoming-section" class="mt-5 pt-4">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div class="d-flex align-items-center gap-4">
+                            <h2 class="fw-bold mb-0">Sự kiện mới</h2>
+                            <ul class="nav nav-pills compact-tabs" id="eventTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active fw-bold border-0 bg-transparent text-dark border-bottom border-3 border-success rounded-0 px-0 me-3" id="weekend-tab" data-bs-toggle="pill" type="button">Cuối tuần này</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link fw-bold border-0 bg-transparent text-muted px-0" id="month-tab" data-bs-toggle="pill" type="button">Tháng này</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/discover" class="btn btn-link text-dark text-decoration-none fw-bold p-0">Xem thêm <i class="bi bi-chevron-right small"></i></a>
+                    </div>
+                    <div class="row g-4" id="upcoming-container">
+                        <!-- Upcoming Event Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <hr class="my-5 opacity-10">
+
+                <!-- Categorized Sections -->
+                
+                <!-- Gaming Section -->
+                <div id="gaming-section" class="mt-5 pt-4 reveal-on-scroll">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div>
+                            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold mb-2">🎮 GAMING</span>
+                            <h2 class="fw-bold mb-0 text-shadow-sm">Thế giới Game thủ</h2>
+                        </div>
+                        <a href="/discover?category=gaming" class="btn btn-link text-primary text-decoration-none fw-bold p-0">Khám phá thêm <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="row g-4" id="gaming-container">
+                        <!-- Gaming Event Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Music Section -->
+                <div id="music-section" class="mt-5 pt-4 reveal-on-scroll">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div>
+                            <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill fw-bold mb-2">🎵 ÂM NHẠC</span>
+                            <h2 class="fw-bold mb-0 text-shadow-sm">Giai điệu & Cảm xúc</h2>
+                        </div>
+                        <a href="/discover?category=music" class="btn btn-link text-warning text-decoration-none fw-bold p-0">Xem tất cả <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="row g-4" id="music-container">
+                        <!-- Music Event Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Sports Section -->
+                <div id="sports-section" class="mt-5 pt-4 reveal-on-scroll">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div>
+                            <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill fw-bold mb-2">⚽ THỂ THAO</span>
+                            <h2 class="fw-bold mb-0 text-shadow-sm">Năng lượng Bứt phá</h2>
+                        </div>
+                        <a href="/discover?category=sports" class="btn btn-link text-success text-decoration-none fw-bold p-0">Tham gia ngay <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="row g-4" id="sports-container">
+                        <!-- Sports Event Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Fashion Section -->
+                <div id="fashion-section" class="mt-5 pt-4 reveal-on-scroll mb-5">
+                    <div class="section-header mb-4 d-flex justify-content-between align-items-end">
+                        <div>
+                            <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill fw-bold mb-2">✨ THỜI TRANG</span>
+                            <h2 class="fw-bold mb-0 text-shadow-sm">Phong cách & Xu hướng</h2>
+                        </div>
+                        <a href="/discover?category=fashion" class="btn btn-link text-danger text-decoration-none fw-bold p-0">Cập nhật xu hướng <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="row g-4" id="fashion-container">
+                        <!-- Fashion Event Cards Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- ===== HOME EXTRA SECTIONS (Additive — home-extra.js) ===== -->
+                <hr class="hx-section-divider">
+
+                <!-- ===== Thuê bạn đồng hành nổi bật ===== -->
+                <div id="hx-companions-section" class="hx-companions-section reveal-on-scroll">
+                    <div class="hx-section-header d-flex justify-content-between align-items-end">
+                        <div>
+                            <span class="hx-section-badge bg-pink bg-opacity-10 text-danger" style="background: rgba(236,72,153,0.1); color: #ec4899;">💎 NỔI BẬT</span>
+                            <h2 class="hx-section-title">Thuê bạn đồng hành</h2>
+                        </div>
+                        <a href="/hire.html" class="btn btn-link text-decoration-none fw-bold p-0" style="color: #ec4899;">Xem tất cả <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="hx-companions-scroll" id="hx-companions-container">
+                        <!-- Rendered by home-extra.js -->
+                    </div>
+                </div>
+
+                <hr class="hx-section-divider">
+
+                <!-- ===== Hoạt động gần đây + Bảng xếp hạng (2 cột) ===== -->
+                <div class="hx-two-col">
+                    <!-- Hoạt động gần đây -->
+                    <div id="hx-activity-section" class="hx-activity-section reveal-on-scroll">
+                        <div class="hx-section-header">
+                            <span class="hx-section-badge" style="background: rgba(16,185,129,0.1); color: #10b981;">⚡ THỜI GIAN THỰC</span>
+                            <h2 class="hx-section-title">Hoạt động gần đây</h2>
+                        </div>
+                        <div class="hx-activity-list" id="hx-activity-container">
+                            <!-- Rendered by home-extra.js -->
+                        </div>
+                    </div>
+
+                    <!-- Bảng xếp hạng -->
+                    <div id="hx-leaderboard-section" class="hx-leaderboard-section reveal-on-scroll">
+                        <div class="hx-section-header">
+                            <span class="hx-section-badge" style="background: rgba(245,158,11,0.1); color: #f59e0b;">🏆 XẾP HẠNG</span>
+                            <h2 class="hx-section-title">Bảng xếp hạng</h2>
+                        </div>
+                        <div class="hx-leaderboard-tabs" id="hx-leaderboard-tabs">
+                            <!-- Tab pills rendered by home-extra.js -->
+                        </div>
+                        <div class="hx-leaderboard-list" id="hx-leaderboard-container">
+                            <!-- Rendered by home-extra.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hx-section-divider">
+
+                <!-- ===== Gợi ý cá nhân hóa (chỉ hiện khi đăng nhập) ===== -->
+                <div id="hx-personalized-section" class="hx-personalized-section reveal-on-scroll" style="display:none;">
+                    <div class="hx-section-header">
+                        <span class="hx-section-badge" style="background: rgba(99,102,241,0.1); color: #6366f1;">🎯 DÀNH CHO BẠN</span>
+                        <h2 class="hx-section-title">Gợi ý cá nhân hóa</h2>
+                    </div>
+                    <div class="hx-personalized-grid" id="hx-personalized-container">
+                        <!-- Rendered by home-extra.js -->
+                    </div>
+                </div>
+
+                <!-- ===== CTA Banner (chỉ hiện khi chưa đăng nhập) ===== -->
+                <div id="hx-cta-section" class="hx-cta-section" style="display:none;">
+                    <div class="hx-cta-banner">
+                        <div class="hx-cta-content">
+                            <h2 class="hx-cta-title">Sẵn sàng khám phá?</h2>
+                            <p class="hx-cta-desc">Tham gia EntConnect ngay hôm nay để kết nối với hàng nghìn người cùng sở thích, sự kiện hấp dẫn và cộng đồng sôi động.</p>
+                            <button class="hx-cta-btn" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                <i class="bi bi-rocket-takeoff"></i> Đăng ký miễn phí
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="fw-bold text-white mb-4">Ent<span class="text-primary">Connect.</span></h3>
+                    <p class="mb-4">Nền tảng tiên phong trong việc kết nối cộng đồng giải trí và chia sẻ đam mê qua các hoạt động thực tế.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://facebook.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 ms-auto">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Khám phá</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" id="footer-link-events" class="text-decoration-none text-muted footer-link-enhanced">Sự kiện</a></li>
+                        <li><a href="#" id="footer-link-community" class="text-decoration-none text-muted footer-link-enhanced">Cộng đồng</a></li>
+                        <li><a href="#" id="footer-link-places" class="text-decoration-none text-muted footer-link-enhanced">Địa điểm</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Hỗ trợ</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" id="footer-link-help" class="text-decoration-none text-muted footer-link-enhanced">Trợ giúp</a></li>
+                        <li><a href="#" id="footer-link-report" class="text-decoration-none text-muted footer-link-enhanced">Báo lỗi</a></li>
+                        <li><a href="#" id="footer-link-rules" class="text-decoration-none text-muted footer-link-enhanced">Quy tắc</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Nhận bản tin</h6>
+                    <p class="small mb-3">Cập nhật những hoạt động cực "chill" hàng tuần.</p>
+                    <div class="position-relative">
+                        <div class="input-group">
+                            <input type="email" id="footer-newsletter-email" class="form-control bg-dark border-secondary text-white rounded-start-pill px-3 newsletter-input" placeholder="Email...">
+                            <button id="footer-newsletter-submit" class="btn btn-primary rounded-end-pill position-relative">
+                                <span class="icon-normal">Đăng ký <i class="bi bi-send ms-1"></i></span>
+                                <span class="icon-loading d-none"><i class="bi bi-arrow-repeat"></i></span>
+                            </button>
+                        </div>
+                        <div id="footer-newsletter-error" class="newsletter-error-msg position-absolute"></div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <p class="text-center small mb-0">&copy; 2026 EntConnect Platform (Graduation Project). Built with ❤️ for interaction.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="/js/api.js"></script>
+    <script src="/js/roles.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/userPrefs.js"></script>
+    <script src="/js/payment.js"></script>
+    <script src="/js/community.js"></script>
+    <script src="/js/search-advanced.js"></script>
+    <script src="/js/chat-realtime.js"></script>
+    <script src="/js/ai-assistant.js"></script>
+    <script src="/js/socket-client.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/hire-data.js"></script>
+    <script src="/js/home-extra.js"></script>
+    <script src="/js/footer-system.js"></script>
+    
+    <!-- Membership & Gamification System -->
+    <script src="/js/exp-system.js"></script>
+    <script src="/js/achievements.js"></script>
+    <script src="/js/daily-reward.js"></script>
+    <script src="/js/membership.js"></script>
+
+    <!-- 🎨 Appearance Studio System -->
+    <script src="/js/theme-presets.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script src="/js/appearance-studio.js"></script>
+
+    <!-- Scroll & Navbar Logic -->
+    <script>
+        const navbar = document.querySelector('.custom-navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

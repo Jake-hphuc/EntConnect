@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết hoạt động - EntConnect</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/style.css">
+    <!-- 🎨 Appearance Studio -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/appearance-studio.css">
+    <link rel="stylesheet" href="/css/footer-enhanced.css">
+    <link rel="stylesheet" href="/chat-room.css">
+    <link rel="stylesheet" href="/payment.css">
+    <link rel="stylesheet" href="/css/membership.css">
+</head>
+
+<body class="bg-body bg-mesh">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar scrolled">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+                <i class="bi bi-rocket-takeoff-fill text-primary me-2 fs-3"></i>
+                <span>Ent<span class="text-primary">Connect</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-grid-fill fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold small text-uppercase gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/discover">Khám phá</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community">Cộng đồng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hire.html">Thuê bạn</a></li>
+                    <li class="nav-item"><a class="nav-link text-primary" href="/marketplace.html">Chợ kết nối <i class="bi bi-stars"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/leaderboard.html">Xếp hạng</a></li>
+                </ul>
+                
+                <!-- Theme Toggle -->
+                <div class="theme-toggle me-3 d-flex align-items-center">
+                    <button id="theme-toggle-btn" class="btn btn-link text-dark p-0 border-0 fs-5">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </div>
+                
+                <!-- Guest UI -->
+                <div class="d-flex gap-2 auth-guest">
+                    <button class="btn btn-link text-decoration-none text-main fw-bold px-3 py-2" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Bắt đầu</button>
+                </div>
+                
+                <!-- User UI -->
+                <div class="auth-user d-none d-flex align-items-center gap-3">
+                    <!-- Membership Badge -->
+                    <div id="navbar-rank-badge" class="rank-badge-nav d-none d-md-flex"></div>
+
+                    <div class="dropdown">
+                        <button class="btn glass-panel dropdown-toggle rounded-pill d-flex align-items-center gap-2 p-1 pe-3 border" type="button" data-bs-toggle="dropdown">
+                            <img src="" alt="avatar" class="rounded-circle current-user-avatar" width="36" height="36" style="object-fit:cover;">
+                            <span class="fw-bold current-username small text-truncate d-none d-sm-inline" style="max-width: 100px;">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-premium border-0 mt-3 p-2 rounded-4">
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/dashboard"><i class="bi bi-grid-1x2 text-primary me-2"></i>Bảng điều khiển</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3 fw-bold" href="/leaderboard.html"><i class="bi bi-trophy-fill text-warning me-2"></i>Bảng xếp hạng</a></li>
+                            <li><a class="dropdown-item py-2 rounded-3" href="/dashboard?tab=profile"><i class="bi bi-person me-2"></i>Hồ sơ cá nhân</a></li>
+                            <li><hr class="dropdown-divider opacity-10"></li>
+                            <li><button class="dropdown-item py-2 rounded-3 text-danger fw-bold" id="btnLogout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-5" style="margin-top: 80px;">
+        <div class="container">
+            <div id="detail-loading" class="text-center py-5">
+                <div class="spinner-border text-primary"></div>
+                <p class="mt-2">Đang tải chi tiết hoạt động...</p>
+            </div>
+
+            <div id="detail-content" class="d-none">
+                <div class="row g-5">
+                    <!-- Left: Main Info -->
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                            <img src="" id="event-cover" class="w-100 object-fit-cover" style="height: 400px;">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <span id="event-category" class="badge bg-primary rounded-pill px-3 py-2 fw-bold text-uppercase">Gaming</span>
+                                    <span id="event-status" class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold">Published</span>
+                                </div>
+                                <h1 id="event-title" class="fw-extrabold mb-4 display-5">Tên hoạt động</h1>
+                                
+                                <div class="glass-panel p-4 rounded-4 mb-5">
+                                    <div class="row g-4 text-center text-md-start">
+                                        <div class="col-md-4">
+                                            <div class="small text-muted fw-bold text-uppercase mb-1">Ngày giờ</div>
+                                            <div class="fw-bold" id="event-date">Chưa xác định</div>
+                                        </div>
+                                        <div class="col-md-4 border-start border-white border-opacity-25">
+                                            <div class="small text-muted fw-bold text-uppercase mb-1">Địa điểm</div>
+                                            <div class="fw-bold" id="event-location">Chưa xác định</div>
+                                        </div>
+                                        <div class="col-md-4 border-start border-white border-opacity-25">
+                                            <div class="small text-muted fw-bold text-uppercase mb-1">Chi phí</div>
+                                            <div class="fw-bold text-success" id="event-price">Miễn phí</div>
+                                            <div id="event-original-price" class="d-none"><span class="text-decoration-line-through text-muted small" id="event-original-price-value"></span> <span class="badge bg-danger rounded-pill small" id="event-discount-badge"></span></div>
+                                            <div id="event-price-note" class="small text-muted mt-1"></div>
+                                            <div id="event-packages-container" class="mt-2 d-none"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="fw-bold mb-3">Về hoạt động này</h5>
+                                <p id="event-description" class="text-muted lh-lg mb-5">Mô tả chi tiết...</p>
+
+                                <div class="border-top pt-4 mb-4">
+                                    <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2 text-primary"></i>Lịch trình chi tiết</h5>
+                                    <p id="event-schedule-detail" class="text-muted lh-lg mb-0 text-truncate-3" style="max-width: 90%;">Sự kiện sẽ bắt đầu đúng giờ. Vui lòng đến trước 15 phút để check-in và nhận vị trí tốt nhất. Trong quá trình tham gia sẽ có nghỉ trưa/teabreak giữa sự kiện.</p>
+                                </div>
+
+                                <div class="border-top pt-4 mb-4">
+                                    <h5 class="fw-bold mb-4">Đánh giá từ cộng đồng</h5>
+                                    <div id="reviews-container" class="d-flex flex-column gap-3 mb-4">
+                                        <!-- Reviews loaded here -->
+                                        <div class="text-muted small italic">Chưa có đánh giá nào cho hoạt động này.</div>
+                                    </div>
+                                    
+                                    <div id="review-form-container" class="glass-premium p-4 rounded-4 d-none">
+                                        <h6 class="fw-bold mb-3">Gửi đánh giá của bạn</h6>
+                                        <form id="review-form">
+                                            <div class="mb-3">
+                                                <div class="rating-input d-flex gap-2 mb-2">
+                                                    <i class="bi bi-star-fill text-muted fs-4 cursor-pointer" data-rating="1"></i>
+                                                    <i class="bi bi-star-fill text-muted fs-4 cursor-pointer" data-rating="2"></i>
+                                                    <i class="bi bi-star-fill text-muted fs-4 cursor-pointer" data-rating="3"></i>
+                                                    <i class="bi bi-star-fill text-muted fs-4 cursor-pointer" data-rating="4"></i>
+                                                    <i class="bi bi-star-fill text-muted fs-4 cursor-pointer" data-rating="5"></i>
+                                                </div>
+                                                <input type="hidden" name="rating" id="review-rating-value" value="5">
+                                            </div>
+                                            <div class="mb-3">
+                                                <textarea class="form-control glass-premium text-white border-0" id="review-comment" rows="3" placeholder="Chia sẻ trải nghiệm của bạn..."></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Gửi đánh giá</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="border-top pt-4">
+                                    <h5 class="fw-bold mb-4">Danh sách người tham gia (<span id="participant-count">0</span>)</h5>
+                                    <div id="participants-avatars" class="d-flex flex-wrap gap-3">
+                                        <!-- Avatars list -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Sticky CTA & Host -->
+                    <div class="col-lg-4">
+                        <div class="sticky-top" style="top: 100px;">
+                            <div class="glass-panel p-4 rounded-4 shadow-sm mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div>
+                                        <h3 class="fw-bold mb-0" id="event-slots">0/0</h3>
+                                        <span class="text-muted small">Suất tham gia</span>
+                                        <div class="x-small fw-bold text-success mt-1" id="event-remaining-slots">Còn lại: 0 chỗ</div>
+                                    </div>
+                                    <div class="text-end">
+                                        <h3 class="fw-bold mb-0 text-primary" id="event-price-cta">FREE</h3>
+                                    </div>
+                                </div>
+                                
+                                <button id="btn-join-action" class="btn btn-primary w-100 py-3 rounded-3 fw-bold mb-3 shadow">Tham gia ngay</button>
+                                <div id="payment-status-badge" class="text-center mb-3 d-none"></div>
+                                <div class="payment-methods-box bg-light rounded-4 p-3 mb-3 text-center">
+                                    <p class="x-small text-muted text-uppercase fw-bold mb-2">Phương thức thanh toán khả dụng</p>
+                                    <div class="d-flex justify-content-center gap-2 text-primary opacity-75">
+                                        <i class="bi bi-qr-code-scan fs-4" title="QR VNPay/Momo"></i>
+                                        <i class="bi bi-credit-card fs-4" title="Thẻ tín dụng"></i>
+                                        <i class="bi bi-bank fs-4" title="Chuyển khoản"></i>
+                                    </div>
+                                </div>
+                                <p class="small text-center text-muted mb-0"><i class="bi bi-shield-check text-success me-1"></i> Trải nghiệm an toàn</p>
+                            </div>
+
+                            <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
+                                <h6 class="fw-bold text-uppercase text-muted small mb-4">Người tổ chức</h6>
+                                <img src="" id="host-avatar" class="rounded-circle mx-auto mb-3" width="80" height="80" style="object-fit: cover;">
+                                <h5 class="fw-bold mb-1" id="host-name">Admin</h5>
+                                <p class="text-muted small mb-3">Người kết nối cộng đồng</p>
+                                <button class="btn btn-outline-primary btn-sm rounded-pill px-4">Xem hồ sơ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/payment.js"></script>
+    <script src="/js/chat-realtime.js"></script>
+    <script src="/js/ai-assistant.js"></script>
+    <script>
+        const detail = {
+            async init() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const eventId = urlParams.get('id');
+                if (!eventId) {
+                    window.location.href = 'index.html';
+                    return;
+                }
+                this.loadEvent(eventId);
+                this.loadReviews(eventId);
+            },
+
+            async loadEvent(id) {
+                try {
+                    const res = await api.request(`/events/${id}`);
+                    if (res.success && res.data.activity) {
+                        this.renderEvent(res.data.activity);
+                        return;
+                    }
+                } catch (err) {
+                    console.warn('API failed, trying mock data...', err.message);
+                }
+
+                // Fallback to mock data
+                const mockEvent = (window.mockActivities || []).find(e => e._id === id);
+                if (mockEvent) {
+                    this.renderEvent(mockEvent);
+                } else {
+                    api.toast('Không tìm thấy sự kiện này.', 'danger');
+                    document.getElementById('detail-loading').innerHTML = '<div class="text-center py-5"><i class="bi bi-exclamation-triangle display-3 text-warning d-block mb-3"></i><h4>Không tìm thấy sự kiện</h4><a href="index.html" class="btn btn-primary rounded-pill mt-3">Về trang chủ</a></div>';
+                }
+            },
+
+            async loadReviews(targetId) {
+                try {
+                    const res = await api.request(`/reviews/target/${targetId}`);
+                    if (res.success && res.data.length > 0) {
+                        this.renderReviews(res.data);
+                    }
+                } catch (err) {
+                    console.error('Failed to load reviews', err);
+                }
+            },
+
+            renderReviews(reviews) {
+                const container = document.getElementById('reviews-container');
+                container.innerHTML = reviews.map(r => `
+                    <div class="glass-card p-3 border-0">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="${ui.resolveImageUrl(r.reviewer?.profile?.avatar, 'avatar')}" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+                                <span class="fw-bold small text-white">${r.reviewer?.username || 'Ẩn danh'}</span>
+                            </div>
+                            <div class="text-warning small">
+                                ${Array(5).fill(0).map((_, i) => `<i class="bi bi-star${i < r.rating ? '-fill' : ''}"></i>`).join('')}
+                            </div>
+                        </div>
+                        <p class="mb-0 small text-white text-opacity-75">${r.comment}</p>
+                        <small class="text-white text-opacity-25 x-small mt-2 d-block">${new Date(r.createdAt).toLocaleDateString()}</small>
+                    </div>
+                `).join('');
+            },
+
+            initReviewForm(targetId, targetType = 'Activity') {
+                const formContainer = document.getElementById('review-form-container');
+                const stars = document.querySelectorAll('.rating-input i');
+                const ratingInput = document.getElementById('review-rating-value');
+                const form = document.getElementById('review-form');
+
+                if (!auth.user) return; // User must be logged in to see form
+                formContainer.classList.remove('d-none');
+
+                stars.forEach(star => {
+                    star.addEventListener('click', () => {
+                        const rating = star.dataset.rating;
+                        ratingInput.value = rating;
+                        stars.forEach((s, index) => {
+                            if (index < rating) {
+                                s.classList.replace('text-muted', 'text-warning');
+                            } else {
+                                s.classList.replace('text-warning', 'text-muted');
+                            }
+                        });
+                    });
+                });
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const comment = document.getElementById('review-comment').value;
+                    const rating = ratingInput.value;
+
+                    if (!comment.trim()) {
+                        api.toast('Vui lòng nhập nhận xét', 'warning');
+                        return;
+                    }
+
+                    try {
+                        const res = await api.request('/reviews', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                targetId,
+                                targetType,
+                                rating,
+                                comment
+                            })
+                        });
+
+                        if (res.success) {
+                            api.toast('Gửi đánh giá thành công!', 'success');
+                            form.reset();
+                            formContainer.classList.add('d-none');
+                            this.loadReviews(targetId);
+                        }
+                    } catch (err) {
+                        api.toast(err.message, 'danger');
+                    }
+                });
+            },
+
+            renderEvent(ev) {
+                document.getElementById('detail-loading').classList.add('d-none');
+                document.getElementById('detail-content').classList.remove('d-none');
+
+                document.title = `${ev.title} - EntConnect`;
+                document.getElementById('event-title').textContent = ev.title;
+                document.getElementById('event-description').textContent = ev.description;
+                document.getElementById('event-category').textContent = ev.category;
+                document.getElementById('event-date').textContent = ui.formatDate(ev.schedule?.startDate, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                document.getElementById('event-location').textContent = ev.location.venue?.name || ev.location.platform || 'Online';
+                
+                document.getElementById('event-slots').textContent = `${ev.currentParticipants || 0}/${ev.maxParticipants || 0}`;
+                const remaining = (ev.maxParticipants || 0) - (ev.currentParticipants || 0);
+                document.getElementById('event-remaining-slots').textContent = remaining > 0 ? `Còn lại: ${remaining} chỗ` : 'Đã hết chỗ';
+                document.getElementById('event-remaining-slots').className = remaining > 0 ? 'x-small fw-bold text-success mt-1' : 'x-small fw-bold text-danger mt-1';
+                
+                document.getElementById('event-cover').src = ui.resolveImageUrl(ev.coverImage, 'activity', ev.category);
+                document.getElementById('event-cover').onerror = function() { ui.handleImageError(this, 'activity', ev.category); };
+
+                // Host info
+                document.getElementById('host-name').textContent = ev.creator?.profile?.fullName || ev.creator?.username || 'Host';
+                document.getElementById('host-avatar').src = ui.resolveImageUrl(ev.creator?.profile?.avatar, 'avatar');
+                document.getElementById('host-avatar').onerror = function() { ui.handleImageError(this, 'avatar'); };
+
+                // Participants
+                const pCount = document.getElementById('participant-count');
+                const pContainer = document.getElementById('participants-avatars');
+                const participants = ev.participants || [];
+                pCount.textContent = participants.length;
+
+                if (participants.length > 0) {
+                    pContainer.innerHTML = participants.map(p => {
+                        const user = p.user || {};
+                        const avatar = ui.resolveImageUrl(user.profile?.avatar, 'avatar');
+                        return `
+                            <div class="text-center" style="width: 60px;">
+                                <img src="${avatar}" onerror="ui.handleImageError(this, 'avatar')"
+                                    class="rounded-circle border mb-1" width="50" height="50" style="object-fit: cover;" title="${user.username || 'User'}">
+                                <div class="x-small text-truncate" style="font-size: 10px;">${user.username || '...'}</div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    pContainer.innerHTML = '<p class="text-muted small italic">Chưa có ai tham gia. Hãy là người đầu tiên!</p>';
+                }
+
+                // Action button logic
+                const btnJoin = document.getElementById('btn-join-action');
+                const isFull = (ev.currentParticipants || 0) >= (ev.maxParticipants || 0);
+                
+                // Check if user is already a participant (API or localStorage)
+                const isParticipantAPI = auth.user && participants.some(p => {
+                    const pUserId = p.user?._id || p.user || '';
+                    return pUserId.toString() === auth.user._id?.toString();
+                });
+                const isParticipantLocal = window.payment && payment.isEventJoined(ev._id);
+                const isParticipant = isParticipantAPI || isParticipantLocal;
+
+                // Show payment status if already paid
+                if (isParticipantLocal) {
+                    const payStatus = payment.getEventPaymentStatus(ev._id);
+                    const statusBadge = document.getElementById('payment-status-badge');
+                    if (statusBadge && payStatus.paid) {
+                        statusBadge.classList.remove('d-none');
+                        statusBadge.innerHTML = `<span class="badge badge-payment-paid rounded-pill px-4 py-2"><i class="bi bi-patch-check-fill me-1"></i>Đã thanh toán - ${ui.formatPrice(payStatus.transaction.amount)}</span>`;
+                    }
+                }
+
+                // Price display enhancement
+                const pricing = ev.pricing;
+                const priceDisplay = document.getElementById('event-price');
+                if (pricing && !pricing.isFree && pricing.price > 0) {
+                    priceDisplay.textContent = ui.formatPrice(pricing.price);
+                    priceDisplay.classList.remove('text-success');
+                    priceDisplay.classList.add('text-primary', 'fs-5');
+                    
+                    // Show original price and discount
+                    if (pricing.originalPrice && pricing.originalPrice > pricing.price) {
+                        const discountPercent = Math.round(((pricing.originalPrice - pricing.price) / pricing.originalPrice) * 100);
+                        document.getElementById('event-original-price').classList.remove('d-none');
+                        document.getElementById('event-original-price-value').textContent = ui.formatPrice(pricing.originalPrice);
+                        document.getElementById('event-discount-badge').textContent = `-${discountPercent}%`;
+                    }
+                    
+                    // Pricing note
+                    if (pricing.note) {
+                        document.getElementById('event-price-note').textContent = pricing.note;
+                    }
+
+                    // Package Pricing
+                    if (pricing.packages && pricing.packages.length > 0) {
+                        priceDisplay.innerHTML = `<span class="small text-muted">Từ</span> ${ui.formatPrice(pricing.price)}`;
+                        
+                        const pkgContainer = document.getElementById('event-packages-container');
+                        pkgContainer.classList.remove('d-none');
+                        pkgContainer.innerHTML = pricing.packages.map(pkg => `
+                            <div class="d-flex justify-content-between align-items-center border-top border-white border-opacity-25 pt-2 mt-2">
+                                <span class="small fw-semibold text-truncate me-2" style="max-width: 60%;">${pkg.name}</span>
+                                <span class="small text-primary fw-bold text-end">${ui.formatPrice(pkg.price)}</span>
+                            </div>
+                        `).join('');
+                    }
+                } else {
+                    priceDisplay.innerHTML = '<i class="bi bi-gift me-1"></i>Miễn phí (Free)';
+                }
+                
+                document.getElementById('event-price-cta').textContent = (pricing?.isFree || !pricing?.price) ? 'FREE' : (pricing?.packages ? `Từ ${ui.formatPrice(pricing.price)}` : ui.formatPrice(pricing.price));
+                
+                if (isParticipant) {
+                    btnJoin.textContent = 'Bạn đã tham gia ✓';
+                    btnJoin.classList.replace('btn-primary', 'btn-success');
+                    btnJoin.disabled = true;
+                    // Nếu đã tham gia, hiện form đánh giá
+                    this.initReviewForm(ev._id);
+                } else if (isFull) {
+                    btnJoin.textContent = 'Đã hết chỗ';
+                    btnJoin.classList.replace('btn-primary', 'btn-secondary');
+                    btnJoin.disabled = true;
+                } else {
+                    // Set button label based on pricing
+                    if (pricing?.isFree || !pricing?.price) {
+                        btnJoin.innerHTML = '<i class="bi bi-plus-circle me-2"></i>Tham gia miễn phí';
+                    } else {
+                        btnJoin.innerHTML = `<i class="bi bi-cart-plus me-2"></i>Đăng ký & Thanh toán - ${ui.formatPrice(pricing.price)}`;
+                    }
+                    
+                    btnJoin.addEventListener('click', async () => {
+                        if (!api.getToken() || !auth.user) {
+                             api.toast('Vui lòng đăng nhập để tham gia giải trí!', 'warning');
+                             auth.showModal('loginModal');
+                             return;
+                        }
+                        
+                        // Use payment module for checkout
+                        if (window.payment) {
+                            payment.openCheckout(ev);
+                        } else {
+                            // Fallback to direct join
+                            btnJoin.disabled = true;
+                            btnJoin.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Đang xử lý...';
+                            
+                            try {
+                                const res = await api.request(`/events/${ev._id}/join`, { method: 'POST' });
+                                if (res.success) {
+                                    api.toast('Tuyệt vời! Bạn đã tham gia thành công.', 'success');
+                                    setTimeout(() => location.reload(), 1500);
+                                }
+                            } catch (err) { 
+                                api.toast(err.message, 'danger');
+                                btnJoin.disabled = false;
+                                btnJoin.innerHTML = 'Tham gia ngay';
+                            }
+                        }
+                    });
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => detail.init());
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="fw-bold text-white mb-4">Ent<span class="text-primary">Connect.</span></h3>
+                    <p class="mb-4">Nền tảng tiên phong trong việc kết nối cộng đồng giải trí và chia sẻ đam mê qua các hoạt động thực tế.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://facebook.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="btn btn-outline-light btn-sm rounded-circle p-2 social-link-enhanced" style="width: 40px; height: 40px;"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2 ms-auto">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Khám phá</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="/discover" id="footer-link-events" class="text-decoration-none text-muted footer-link-enhanced">Sự kiện</a></li>
+                        <li><a href="/community" id="footer-link-community" class="text-decoration-none text-muted footer-link-enhanced">Cộng đồng</a></li>
+                        <li><a href="#" id="footer-link-places" class="text-decoration-none text-muted footer-link-enhanced">Địa điểm</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Hỗ trợ</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" id="footer-link-help" class="text-decoration-none text-muted footer-link-enhanced">Trợ giúp</a></li>
+                        <li><a href="#" id="footer-link-report" class="text-decoration-none text-muted footer-link-enhanced">Báo lỗi</a></li>
+                        <li><a href="#" id="footer-link-rules" class="text-decoration-none text-muted footer-link-enhanced">Quy tắc</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold text-white mb-4 text-uppercase">Nhận bản tin</h6>
+                    <p class="small mb-3">Cập nhật những hoạt động cực "chill" hàng tuần.</p>
+                    <div class="position-relative">
+                        <div class="input-group">
+                            <input type="email" id="footer-newsletter-email" class="form-control bg-dark border-secondary text-white rounded-start-pill px-3 newsletter-input" placeholder="Email...">
+                            <button id="footer-newsletter-submit" class="btn btn-primary rounded-end-pill position-relative">
+                                <span class="icon-normal">Đăng ký <i class="bi bi-send ms-1"></i></span>
+                                <span class="icon-loading d-none"><i class="bi bi-arrow-repeat"></i></span>
+                            </button>
+                        </div>
+                        <div id="footer-newsletter-error" class="newsletter-error-msg position-absolute"></div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <p class="text-center small mb-0">&copy; 2026 EntConnect Platform (Graduation Project). Built with ❤️ for interaction.</p>
+        </div>
+    </footer>
+    <script src="/js/footer-system.js"></script>
+    
+    <!-- Membership & Gamification System -->
+    <script src="/js/exp-system.js"></script>
+    <script src="/js/achievements.js"></script>
+    <script src="/js/daily-reward.js"></script>
+    <script src="/js/membership.js"></script>
+
+    <!-- 🎨 Appearance Studio System -->
+    <script src="/js/theme-presets.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script src="/js/appearance-studio.js"></script>
+</body>
+
+</html>

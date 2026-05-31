@@ -1,0 +1,459 @@
+/* =============================================
+   EntConnect - Hire Companion Premium Styles
+   ============================================= */
+
+/* ---- Hero ---- */
+.hire-hero { position: relative; padding: 120px 0 40px; overflow: hidden; }
+.hire-hero::before { content:''; position:absolute; top:-50px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(99,102,241,0.12)0%,transparent 70%); animation:float-gradient 12s ease-in-out infinite alternate; z-index:0; }
+.hire-stats-panel { background:var(--bg-card); border:1px solid var(--border-color); backdrop-filter:blur(12px); transition:transform 0.3s ease; }
+.hire-stats-panel:hover { transform:translateY(-2px); }
+
+/* ---- Search ---- */
+.hire-search-bar { background:var(--bg-card); border:2px solid var(--border-color); border-radius:60px; padding:6px; transition:all 0.3s ease; box-shadow:var(--shadow-sm); }
+.hire-search-bar:focus-within { border-color:var(--primary-light); box-shadow:0 0 0 4px rgba(99,102,241,0.1),var(--shadow-md); transform:scale(1.01); }
+.hire-search-bar input { border:none; background:transparent; outline:none; font-weight:500; color:var(--text-main); padding:10px 16px; }
+.hire-search-bar input::placeholder { color:var(--text-muted); }
+
+/* ---- Service Pills ---- */
+.service-pills { display:flex; gap:8px; flex-wrap:wrap; }
+.service-pill { padding:8px 20px; border-radius:50px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-muted); font-weight:700; font-size:0.85rem; cursor:pointer; transition:all 0.3s ease; white-space:nowrap; }
+.service-pill:hover { border-color:var(--primary-light); color:var(--primary); background:rgba(99,102,241,0.05); }
+.service-pill.active { background:var(--primary); color:white; border-color:var(--primary); box-shadow:0 4px 15px rgba(99,102,241,0.3); }
+
+/* ---- Sidebar ---- */
+.hire-sidebar { position:sticky; top:100px; }
+.hire-filter-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px; overflow:hidden; transition:box-shadow 0.3s ease; }
+.hire-filter-card:hover { box-shadow:var(--shadow-md); }
+.hire-filter-title { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:12px; }
+
+/* ---- Companion Card ---- */
+.companion-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px; overflow:hidden; transition:all 0.4s cubic-bezier(0.165,0.84,0.44,1); height:100%; display:flex; flex-direction:column; position:relative; }
+.companion-card:hover { transform:translateY(-8px); box-shadow:0 20px 40px rgba(99,102,241,0.12); border-color:var(--primary-light); }
+.companion-card-img { height:220px; overflow:hidden; position:relative; }
+.companion-card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s cubic-bezier(0.23,1,0.32,1); }
+.companion-card:hover .companion-card-img img { transform:scale(1.08); }
+.companion-card-img .overlay-gradient { position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(to top,rgba(0,0,0,0.6),transparent); pointer-events:none; }
+
+/* ---- Status ---- */
+.status-dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+.status-dot.online { background:#10b981; box-shadow:0 0 8px rgba(16,185,129,0.6); animation:statusPulse 2s ease-in-out infinite; }
+.status-dot.offline { background:#94a3b8; }
+.status-dot.busy { background:#f59e0b; box-shadow:0 0 8px rgba(245,158,11,0.4); }
+.status-dot.booked { background:#8b5cf6; box-shadow:0 0 8px rgba(139,92,246,0.4); }
+@keyframes statusPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.85)} }
+
+.status-badge-card { position:absolute; top:12px; right:12px; padding:4px 12px; border-radius:50px; font-size:0.7rem; font-weight:800; text-transform:uppercase; z-index:5; backdrop-filter:blur(8px); }
+.status-badge-card.online { background:rgba(16,185,129,0.9); color:white; }
+.status-badge-card.offline { background:rgba(100,116,139,0.85); color:white; }
+.status-badge-card.busy { background:rgba(245,158,11,0.9); color:white; }
+.status-badge-card.booked { background:rgba(139,92,246,0.9); color:white; }
+
+.verified-badge { display:inline-flex; align-items:center; gap:4px; font-size:0.7rem; color:#3b82f6; font-weight:700; }
+.btn-fav-companion { position:absolute; top:12px; left:12px; width:36px; height:36px; border-radius:50%; border:none; background:rgba(0,0,0,0.35); backdrop-filter:blur(8px); color:white; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease; z-index:5; }
+.btn-fav-companion:hover { background:rgba(239,68,68,0.8); transform:scale(1.15); }
+.btn-fav-companion.active { background:#ef4444; }
+.companion-price-tag { font-size:1.1rem; font-weight:800; background:linear-gradient(135deg,var(--primary),var(--primary-light)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.skill-chip { font-size:0.7rem; padding:3px 10px; border-radius:6px; background:rgba(99,102,241,0.08); color:var(--primary); font-weight:600; white-space:nowrap; }
+.rating-stars { color:#fbbf24; font-size:0.8rem; }
+.rating-stars .empty { color:var(--border-color); }
+
+/* ---- Detail Modal ---- */
+.companion-detail-header { position:relative; height:280px; overflow:hidden; }
+.companion-detail-header img { width:100%; height:100%; object-fit:cover; }
+.companion-detail-header .overlay-info { position:absolute; bottom:0; left:0; right:0; padding:30px; background:linear-gradient(to top,rgba(0,0,0,0.85),transparent); color:white; }
+.companion-tab-nav .nav-link { color:var(--text-muted); font-weight:700; border:none; padding:10px 20px; border-radius:12px; transition:all 0.3s ease; font-size:0.85rem; }
+.companion-tab-nav .nav-link:hover { color:var(--primary); background:rgba(99,102,241,0.06); }
+.companion-tab-nav .nav-link.active { color:white; background:var(--primary); box-shadow:0 4px 12px rgba(99,102,241,0.3); }
+
+/* ---- Booking Wizard ---- */
+.booking-wizard-steps { display:flex; justify-content:center; gap:8px; margin-bottom:24px; }
+.wizard-step-dot { width:10px; height:10px; border-radius:50%; background:var(--border-color); transition:all 0.3s ease; }
+.wizard-step-dot.active { background:var(--primary); box-shadow:0 0 0 4px rgba(99,102,241,0.2); transform:scale(1.2); }
+.wizard-step-dot.completed { background:#10b981; }
+.booking-service-option { padding:14px 18px; border-radius:14px; border:2px solid var(--border-color); cursor:pointer; transition:all 0.3s ease; background:var(--bg-card); }
+.booking-service-option:hover { border-color:var(--primary-light); background:rgba(99,102,241,0.03); }
+.booking-service-option.selected { border-color:var(--primary); background:rgba(99,102,241,0.06); box-shadow:0 0 0 3px rgba(99,102,241,0.1); }
+.booking-summary-box { background:linear-gradient(135deg,rgba(99,102,241,0.04),rgba(236,72,153,0.03)); border:1px solid var(--border-color); border-radius:16px; padding:20px; }
+.time-slot { padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center; cursor:pointer; transition:all 0.2s ease; font-size:0.85rem; font-weight:600; }
+.time-slot:hover { border-color:var(--primary-light); }
+.time-slot.selected { background:var(--primary); color:white; border-color:var(--primary); box-shadow:0 4px 12px rgba(99,102,241,0.25); }
+.time-slot.disabled { opacity:0.4; cursor:not-allowed; background:var(--border-color); }
+
+/* ---- Booking History ---- */
+.booking-history-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:16px; padding:16px; transition:all 0.3s ease; cursor:pointer; }
+.booking-history-card:hover { border-color:var(--primary-light); transform:translateX(4px); box-shadow:var(--shadow-sm); }
+.booking-status-badge { padding:4px 12px; border-radius:50px; font-size:0.7rem; font-weight:800; text-transform:uppercase; }
+.booking-status-badge.pending { background:rgba(245,158,11,0.1); color:#f59e0b; }
+.booking-status-badge.paid { background:rgba(16,185,129,0.1); color:#10b981; }
+.booking-status-badge.completed { background:rgba(99,102,241,0.1); color:#6366f1; }
+.booking-status-badge.cancelled { background:rgba(239,68,68,0.1); color:#ef4444; }
+
+/* ---- Review Stars Input ---- */
+.review-star-input { display:flex; gap:4px; direction:rtl; justify-content:center; }
+.review-star-input i { font-size:2rem; color:var(--border-color); cursor:pointer; transition:all 0.2s ease; }
+.review-star-input i:hover, .review-star-input i:hover ~ i, .review-star-input i.active, .review-star-input i.active ~ i { color:#fbbf24; transform:scale(1.1); }
+
+/* ---- Mini Chat ---- */
+.hire-chat-window { position:fixed; bottom:90px; right:24px; width:360px; height:480px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.15); display:flex; flex-direction:column; overflow:hidden; z-index:1040; animation:chatSlideUp 0.3s ease-out; }
+@keyframes chatSlideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.hire-chat-header { padding:16px; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:white; flex-shrink:0; }
+.hire-chat-body { flex:1; overflow-y:auto; padding:16px; background:var(--bg-body); }
+.hire-chat-footer { padding:12px; border-top:1px solid var(--border-color); flex-shrink:0; background:var(--bg-card); }
+.chat-msg { max-width:80%; padding:10px 14px; border-radius:16px; font-size:0.9rem; margin-bottom:8px; line-height:1.5; }
+.chat-msg.sent { background:var(--primary); color:white; margin-left:auto; border-bottom-right-radius:4px; }
+.chat-msg.received { background:var(--bg-card); border:1px solid var(--border-color); margin-right:auto; border-bottom-left-radius:4px; }
+
+/* ---- Empty State ---- */
+.hire-empty-state { text-align:center; padding:60px 20px; }
+.hire-empty-state i { font-size:4rem; color:var(--border-color); margin-bottom:16px; display:block; }
+.results-info { font-size:0.85rem; color:var(--text-muted); font-weight:600; }
+
+/* ---- Card Stagger ---- */
+@keyframes cardFadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.companion-card { animation:cardFadeIn 0.4s ease-out both; }
+.companion-card:nth-child(1){animation-delay:.05s} .companion-card:nth-child(2){animation-delay:.1s} .companion-card:nth-child(3){animation-delay:.15s} .companion-card:nth-child(4){animation-delay:.2s}
+.companion-card:nth-child(5){animation-delay:.25s} .companion-card:nth-child(6){animation-delay:.3s} .companion-card:nth-child(7){animation-delay:.35s} .companion-card:nth-child(8){animation-delay:.4s}
+
+.btn-report { color:var(--text-muted); font-size:0.8rem; cursor:pointer; transition:color 0.2s ease; }
+.btn-report:hover { color:#ef4444; }
+.avail-day { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:600; cursor:default; border:1px solid transparent; }
+.avail-day.available { background:rgba(16,185,129,0.1); color:#10b981; border-color:rgba(16,185,129,0.2); }
+.avail-day.unavailable { background:var(--bg-panel); color:var(--text-muted); opacity:0.5; }
+
+/* ---- Responsive ---- */
+@media(max-width:992px) { .hire-sidebar{position:relative;top:0} .companion-card-img{height:180px} }
+@media(max-width:768px) { .hire-hero{padding:100px 0 30px} .hire-search-bar{border-radius:16px} .hire-chat-window{width:calc(100vw - 32px);right:16px;bottom:80px;height:400px} .companion-detail-header{height:200px} }
+}
+
+/* =============================================
+   EntConnect - VIP Charity Auction Premium Styles
+   ============================================= */
+
+.auction-section {
+    background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, rgba(236, 72, 153, 0.04) 90%);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(99, 102, 241, 0.05);
+}
+
+.auction-section-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.auction-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.auction-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1), 0 4px 20px rgba(99, 102, 241, 0.08);
+}
+
+.auction-card-img {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.auction-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.auction-card:hover .auction-card-img img {
+    transform: scale(1.05);
+}
+
+.auction-card-img .overlay-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    pointer-events: none;
+}
+
+.auction-badge-live {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    z-index: 5;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(8px);
+}
+
+.auction-badge-live .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    animation: livePulse 1.2s infinite;
+}
+
+@keyframes livePulse {
+    0% { transform: scale(0.6); opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    100% { transform: scale(1.4); opacity: 0; box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+}
+
+.auction-badge-time {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    z-index: 5;
+    background: rgba(15, 23, 42, 0.85);
+    color: #fb923c;
+    border: 1px solid rgba(251, 146, 60, 0.3);
+    backdrop-filter: blur(8px);
+    font-family: 'Outfit', sans-serif;
+}
+
+.auction-badge-charity {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 5;
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    backdrop-filter: blur(8px);
+}
+
+.auction-charity-bar {
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.charity-segment-don { background: #10b981; }
+.charity-segment-cel { background: #6366f1; }
+.charity-segment-pla { background: #ec4899; }
+
+.auction-price-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.auction-price-val {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #f59e0b;
+    font-family: 'Outfit', sans-serif;
+}
+
+.auction-btn-bid {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    color: #0f172a;
+    border: none;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.2);
+    transition: all 0.3s ease;
+}
+
+.auction-btn-bid:hover {
+    background: linear-gradient(135deg, #fcd34d, #f59e0b);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+    color: #0f172a;
+}
+
+/* ---- Bidding Modal ---- */
+.auction-modal-img {
+    height: 100%;
+    min-height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.auction-timer-lg {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 1px;
+    background: rgba(251, 146, 60, 0.05);
+    border: 1px solid rgba(251, 146, 60, 0.15);
+    color: #fb923c;
+    border-radius: 12px;
+    text-shadow: 0 0 10px rgba(251, 146, 60, 0.2);
+}
+
+.bid-history-container {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.bid-history-row {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
+}
+
+.bid-history-row:last-child {
+    border-bottom: none;
+}
+
+.bid-history-row:hover {
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.bid-history-row.user-bid {
+    background: rgba(16, 185, 129, 0.06);
+    border-left: 3px solid #10b981;
+}
+
+.quick-bid-chip {
+    padding: 6px 12px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+}
+
+.quick-bid-chip:hover {
+    border-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    color: #f59e0b;
+}
+
+/* ---- Charity Pie / Breakdown ---- */
+.charity-breakdown-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+.dot-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ---- Outbid Glow ---- */
+@keyframes outbidWarningPulse {
+    0%, 100% { border-color: var(--border-color); box-shadow: none; }
+    50% { border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
+}
+
+.auction-card.outbid-alert {
+    animation: outbidWarningPulse 1.5s infinite;
+}
+
+/* ---- Charity Donation Certificate ---- */
+.donation-certificate-container {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 4px double #d97706;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    color: #f8fafc;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.donation-certificate-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle at 50% 30%, rgba(217, 119, 6, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.cert-ribbon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    color: #fbbf24;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+.cert-title {
+    font-family: 'Outfit', sans-serif;
+    color: #fbbf24;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cert-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+    display: inline-block;
+    padding-bottom: 4px;
+    color: #ffffff;
+}
+
+.cert-amount {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.cert-stamp {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px dashed #10b981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: #10b981;
+    font-weight: 800;
+    text-transform: uppercase;
+    transform: rotate(-15deg);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    margin: 0 auto;
+}
+
