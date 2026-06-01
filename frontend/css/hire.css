@@ -123,7 +123,6 @@
 /* ---- Responsive ---- */
 @media(max-width:992px) { .hire-sidebar{position:relative;top:0} .companion-card-img{height:180px} }
 @media(max-width:768px) { .hire-hero{padding:100px 0 30px} .hire-search-bar{border-radius:16px} .hire-chat-window{width:calc(100vw - 32px);right:16px;bottom:80px;height:400px} .companion-detail-header{height:200px} }
-}
 
 /* =============================================
    EntConnect - VIP Charity Auction Premium Styles
