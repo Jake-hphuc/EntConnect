@@ -498,3 +498,4 @@ const discover = {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => discover.init());
+window.discover = discover;

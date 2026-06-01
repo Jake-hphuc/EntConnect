@@ -791,6 +791,12 @@ const payment = {
             if (cached) return cached;
         }
 
+        // Check discover page cached results (API events)
+        if (window.discover?.latestResults) {
+            const discoverFound = window.discover.latestResults.find(e => e._id === id);
+            if (discoverFound) return discoverFound;
+        }
+
         return null;
     }
 };

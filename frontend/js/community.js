@@ -124,13 +124,13 @@ const communityPage = {
                 <div class="col-md-6 col-xl-6 reveal-on-scroll">
                     <div class="community-card card rounded-4 h-100 overflow-hidden ${isJoined ? 'joined' : ''}" style="animation-delay: ${index * 0.05}s" onclick="communityPage.openCommunityDetail('${c.id}')">
                         <div class="cover-container">
-                            <img src="${c.coverImage}" class="w-100 h-100 object-fit-cover" alt="${c.name}">
+                            <img src="${c.coverImage}" class="w-100 h-100 object-fit-cover" alt="${c.name}" onerror="if(window.ui) window.ui.handleImageError(this, 'activity', '${c.category}')">
                             <div class="activity-badge"><i class="bi bi-activity"></i> ${c.activityLevel}</div>
                             ${isJoined ? '<div class="position-absolute bottom-0 end-0 m-3 badge bg-success rounded-pill px-3 py-2 shadow-sm"><i class="bi bi-patch-check-fill me-1"></i>Đã tham gia</div>' : ''}
                         </div>
-                        <div class="card-body p-4 d-flex flex-column bg-white">
+                        <div class="card-body p-4 d-flex flex-column bg-transparent">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h4 class="fw-bold mb-0 font-outfit text-dark truncate pe-2"><i class="bi ${c.icon} me-2 text-primary"></i>${c.name}</h4>
+                                <h4 class="fw-bold mb-0 font-outfit text-main truncate pe-2"><i class="bi ${c.icon} me-2 text-primary"></i>${c.name}</h4>
                             </div>
                             <div class="community-tags mt-2">
                                 ${tagsHtml}
@@ -141,7 +141,7 @@ const communityPage = {
                                 <div class="d-flex align-items-center text-muted small fw-bold">
                                     <i class="bi bi-people-fill me-1 text-primary"></i> ${c.memberCount.toLocaleString()}
                                     <span class="mx-2">•</span>
-                                    <span class="text-dark">${priceTag}</span>
+                                    <span class="text-main">${priceTag}</span>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +173,7 @@ const communityPage = {
         recs.forEach(c => {
             html += `
                 <div class="rec-item" onclick="communityPage.openCommunityDetail('${c.id}')">
-                    <img src="${c.coverImage}" alt="${c.name}" class="rec-image">
+                    <img src="${c.coverImage}" alt="${c.name}" class="rec-image" onerror="if(window.ui) window.ui.handleImageError(this, 'activity', '${c.category}')">
                     <div class="rec-info">
                         <div class="rec-title">${c.name}</div>
                         <div class="rec-meta"><i class="bi bi-people-fill"></i> ${c.memberCount.toLocaleString()} • ${c.activityLevel}</div>
@@ -300,6 +300,7 @@ const communityPage = {
 
         if (c.pricing && !c.pricing.isFree && window.payment) {
             // Map community object to look like an event for the checkout
+            c._id = c.id;
             c.title = c.name; 
             c.isCommunity = true;
             window.payment.openCheckout(c);

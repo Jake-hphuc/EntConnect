@@ -122,6 +122,10 @@ const ui = {
         // Check if user already joined this event
         const isJoined = window.payment ? payment.isEventJoined(event._id) : false;
 
+        // Cache event object for payment lookup
+        if (!window._ecEventCache) window._ecEventCache = {};
+        window._ecEventCache[event._id] = event;
+
         return `
             <div class="${className} reveal-on-scroll active">
                 <div class="event-card" style="animation-delay: ${index * 0.05}s">
@@ -182,7 +186,7 @@ const ui = {
                                     ? `<button class="btn btn-success btn-sm w-50 rounded-3 fw-bold py-2" disabled><i class="bi bi-check-circle"></i> Đã đ.ký</button>`
                                     : `<button class="btn ${isFree ? 'btn-outline-primary' : 'btn-primary'} btn-sm w-50 rounded-3 fw-bold py-2" 
                                              data-action="join-event" data-event-id="${event._id}"
-                                             onclick="event.stopPropagation();">
+                                             onclick="if(window.payment && window._ecEventCache){ window.payment.openCheckout(window._ecEventCache['${event._id}']); } return false;">
                                         Tham gia ngay
                                        </button>`
                                 }
